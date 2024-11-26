@@ -1,0 +1,32 @@
+{
+    "menu": {
+        "foods": [
+            {
+                "name": "Chicken",
+                "type": "Main Course"
+            },
+            {
+                "name": "Toast",
+                "type": "Side"
+            },
+            {
+                "name": "Roti",
+                "type": "Side"
+            }
+        ],
+        "drinks": [
+            {
+                "name": "Tea",
+                "type": "Hot Beverage"
+            },
+            {
+                "name": "Coffee",
+                "type": "Hot Beverage"
+            },
+            {
+                "name": "Juice",
+                "type": "Cold Beverage"
+            }
+        ]
+    }
+}

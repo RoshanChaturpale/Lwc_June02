@@ -1,0 +1,335 @@
+<apex:page controller="SL_createPreApprovalLeadCntr" standardStyleSheets="false" docType="html-5.0">
+    
+    <style>
+        label{
+        color:#0a2463;
+        font-weight:600;
+        }
+        .form-control{
+        border-color: #0a2463 !important; 
+        }
+    </style>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <div class=" container-fluid " style="background: #0a2463;">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8" style="padding: 1.5rem;">
+                <apex:form styleClass="form-horizontal" id="frm" >
+                    
+                    
+                    <apex:actionFunction name="CallApexMethod" action="{!addserviceProducts}"/>
+                    <div class=" card" style="padding:1.5rem;"> 
+                        <div style="border-bottom: 1px solid #EAEAEA;">
+                            
+                        <!-- Static Resources  -- with this help of add image -->
+                         <div style="text-align:center;">
+                             <apex:image styleClass="img-fluid" width="60%" url="{!URLFOR($Resource.vfimagetest, 'cats/kitten1.jpg')}" />
+                            </div>   
+                            
+                              
+
+                            
+                            
+                            <h4 style="text-align:center;">
+                                Pre-Approval Request Form
+                            </h4>
+                        </div>
+                        
+                        <!---server side error --->
+                        <apex:pageMessages ></apex:pageMessages>
+                        
+                        <center><div class="error" id="errorDisplay"></div></center>
+                        
+                        <div class="row p-2">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <div class = "requiredInput">
+                                        <div class = "requiredBlock"></div>
+                                        <label for="exampleInputEmail1" class="form-label"><span style="color:red">* </span>Name</label>
+                                        <apex:inputText styleClass="form-control inputboxes" id="nameField" label="Name" value="{!name}"/>
+                                        <div id="err1" style="font-size: 12px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label"><span style="color:red">* </span>Email</label>
+                                    <apex:inputText styleClass="form-control inputboxes" label="Email" id="emailField" value="{!email}"/>
+                                    <div id="err2" style="font-size: 12px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <div class="row ">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <div class = "requiredInput">
+                                        <div class = "requiredBlock"></div>
+                                        <label for="exampleInputPassword1" class="form-label"><span style="color:red">* </span>Phone</label>
+                                        <apex:input type="number" styleClass="form-control inputboxes" id="phoneField" onkeyup="phoneCheck(this);" value="{!mobile}" />
+                                        <div id="err3" style="font-size: 12px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Company</label>
+                                    <apex:inputText styleClass="form-control inputboxes"  value="{!company}"  />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">SSN</label>
+                                    <apex:inputText styleClass="form-control inputboxes"  value="{!ssn}"  />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">How you got to know us</label>
+                                    <apex:inputText styleClass="form-control inputboxes"  value="{!howKnowUs}"  />
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="row ">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Street Address</label>
+                                    <apex:inputText styleClass="form-control inputboxes"  value="{!address}"  />
+                                </div>
+                                
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">City</label>
+                                    <apex:inputText styleClass="form-control inputboxes"  value="{!city}"  />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row ">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">State</label>
+                                    <apex:inputText styleClass="form-control inputboxes"  value="{!state}"  />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Zip Code</label>
+                                    <apex:inputText styleClass="form-control inputboxes"  value="{!zipCode}"  />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                         <div class="mb-3 ">
+                       
+                            <fieldset class="clsFieldset">
+                            <legend for="exampleInputPassword1" class="form-label clsLegend"><span style="color:red">* </span>Products Interested In</legend>
+                                <div class="error" id="errorDisplay" style="font-size: 12px;"></div>
+                           
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3 form-check">
+                                        <apex:inputCheckbox styleClass="form-check-input" value="{!bridgeFinancing}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!bridgeFinancing}">Bridge Financing</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!personalLoans}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!personalLoans}">Personal Loans</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!businessLoan}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!businessLoan}">Business Term Loan</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!personalCreditCards}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!personalCreditCards}">Personal Credit Cards</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!businessCreditCard}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!businessCreditCard}">Business Credit Cards</label>
+                                    </div>
+                                   
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!equipementFinance}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!equipementFinance}">Equipment Finance</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!HELOC}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!heloc}">HELOC (Home Equity Line of Credit)</label>
+                                    </div>
+                                   
+                                   
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!debtSettlement}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!debtSettlement}">Debt Settlement</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!debtMitigation}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!debtMitigation}">Debt Mitigation</label>
+                                    </div>
+                                    
+                                     <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!linesOfCredit}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!linesOfCredit}"> Business Lines of Credit</label>
+                                    </div>
+                                    
+                                </div>
+                                  </div>
+                                </fieldset>
+                        
+                          </div>
+                        
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Consent to Request a Soft Pull of Applicants Credit Report </label>
+                            <div style="height:100px; overflow-y:scroll;border: 1px solid #EAEAEA;padding:0.5rem;">
+                                I understand that by clicking on the Submit button immediately following this notice, I am providing written instructions to Streamlined Consultants Inc. under the Fair Credit Reporting Act authorizing Streamlined Consultants Inc. to obtain information from my personal credit profile or other information from Reseller. I authorize Streamlined Consultants Inc. to obtain such information solely to prequalify me for credit options (or something that indicates the financial aspect of the transaction). Credit Information accessed for my pre qualification request may be different than the Credit Information accessed by a credit grantor on a date after the date of my original pre-qualification request to make the credit decision.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            
+                            <apex:inputCheckbox styleClass="form-check-input" value="{!termsandCondition}" id="termId"/>
+                            <label class="form-check-label boldTexts" for="exampleCheck1"><span style="color:red">* </span>I accept the Terms and Conditions.</label>
+                            <div id="err4" style="font-size: 12px;"></div>
+                            
+                        </div>
+                        <div class="d-grid gap-2">
+                            <apex:commandButton style="color: #fff;font-weight:600;background: #0a2463;padding: 8px 20px 9px 20px;"   onclick="validateForm();" value="Submit" id="theeButton" />
+                            <apex:commandButton style="color: #222222;font-weight:600;background-color: #bdc3c7;border: 1px solid #bdc3c7;padding: 5px 15px 5px 15px;"  action="{!servicesRequested}" value="Back" id="theButton"/>
+                        </div>
+                    </div>
+                </apex:form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <script>
+    
+    //For Phone Validation Error with 'onkeyup' event
+    function phoneCheck(element){
+        var errorMsg = element.nextElementSibling;
+        if (element.value.length > 10)
+        {
+            errorMsg.innerHTML = "Phone must be 10 digit long.";
+            errorMsg.style.color = "red";
+        }
+        else{
+            errorMsg.innerHTML = "";
+            errorMsg.style.color = "green";
+        }
+    }
+    
+    //validation with Button Click Event
+    function validateForm(){
+        
+        event.preventDefault();
+        console.log('name');
+        
+        //For Email Field
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        
+        //For Name Field
+        var name = document.getElementById("{!$Component.frm.nameField}");
+        nameError = name.nextElementSibling;                                            
+        //alert(name.value.length);
+                                                     
+        //For Email field                                             
+        var email = document.getElementById('{!$Component.frm.emailField}');
+        emailError = email.nextElementSibling;                                              
+        console.log('email'+email.value);
+                                                     
+                                                     
+        //for Phone field with button Click event
+        var phone = document.getElementById('{!$Component.frm.phoneField}');
+        phoneError = phone.nextElementSibling;  
+                                                     
+        //for termsAndCondition Checkbox                                             
+        var termsAndCondition = document.getElementById('{!$component.frm.termId}');
+        nextElement = termsAndCondition.nextElementSibling;
+        conditionError =  nextElement.nextElementSibling;                                    
+        console.log('terms++'+JSON.stringify(termsAndCondition));                                       
+        console.log('term++'+termsAndCondition.checked); 
+        
+        var isError = false;
+                                                     
+        if(!isError){ 
+            
+            //For Name Field validation
+            if(name.value.length == 0)
+            {
+                nameError.innerHTML=" Please enter valid name.";
+                nameError.style.color = "red";
+                isError = true;
+            } 
+            else
+            {
+                nameError.innerHTML="";
+            } 
+            
+            //for email field validation
+            if(email.value.length == 0 || !email.value.match(validRegex))
+            {
+                emailError.innerHTML=" Please enter valid email address.";
+                emailError.style.color = "red";
+                isError = true;
+            }
+            else{
+                emailError.innerHTML="";
+                //isError = true;
+            } 
+            
+            //for Phone field validation
+            if(phone.value.length == 0)
+            {
+                phoneError.innerHTML="Please enter valid phone.";
+                phoneError.style.color = "red";
+                isError = true;
+            }
+            else if(phone.value.length > 10){
+                phoneError.innerHTML="Phone must be 10 digit long.";
+                phoneError.style.color = "red";
+                isError = true;
+            }
+            else
+            {
+                phoneError.innerHTML="";
+            } 
+            
+            //for termsAndCondition field validation
+            if(termsAndCondition.checked == false) 
+            {
+                conditionError.innerHTML="Select terms and condition.";
+                conditionError.style.color = "red";
+                isError = true; 
+            }                                                                     
+            else
+            {  
+                conditionError.innerHTML="";
+            }
+        }
+        if (isError) 
+        {
+            console.log('Validation errors occurred.');
+        }    
+        else {
+            
+            //Call Apex method with this help of script
+            CallApexMethod();  
+        }                                    
+        
+        
+    }//emailField
+    
+    </script>
+</apex:page>

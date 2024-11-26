@@ -1,0 +1,53 @@
+<template>
+    <lightning-card title="Tabs with Integration Setting Form">
+        <div class="slds-p-around_medium">
+            <!-- Tabset with 3 tabs -->
+            <lightning-tabset active-tab-value={activeTab} onactive={handleTabChange}>
+                <!-- Tab 1 -->
+                <lightning-tab label="Inverite" value="tab1">
+                    <lightning-card variant="Narrow" title="For Inverite" icon-name="standard:contact">
+                        <div class="slds-m-top_large">
+                            <lightning-record-edit-form object-api-name="Integration_Setting__c" onsuccess={handleSuccess}>
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning-input-field field-name="API_Token__c" required></lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning-input-field field-name="Endpoint__c" required></lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning-input-field field-name="Username__c" required></lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning-input-field field-name="Password__c" required></lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning-input-field field-name="Method__c" required></lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning-input-field field-name="CRM_Customer__c" required></lightning-input-field>
+                                    </div>
+                                </div>
+                            </lightning-record-edit-form>
+
+                            <!-- Custom Submit Button with same width as input fields -->
+                            <div class="slds-col slds-size_1-of-1 slds-m-top_small">
+                                <lightning-button label="Save Integration Setting" onclick={handleSubmit} variant="brand" style="width: 100%;"></lightning-button>
+                            </div>
+                        </div>
+                    </lightning-card>
+                </lightning-tab>
+
+                <!-- Tab 2 -->
+                <lightning-tab label="Flinks" value="tab2">
+                   cvbnm,vbnm,
+                </lightning-tab>
+
+                <!-- Tab 3 -->
+                <lightning-tab label="Pandadocs" value="tab3">
+                    fghjklfghjk
+                </lightning-tab>
+            </lightning-tabset>
+        </div>
+    </lightning-card>
+</template>

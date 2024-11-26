@@ -1,0 +1,51 @@
+<apex:page controller="VF_Controller3" standardStylesheets="true">
+    
+    <apex:form >
+        <apex:pageBlock title="Account Page">
+            <apex:pageBlockSection title="Account Search field" columns="2">
+                 <apex:inputText label="Enter Search Text" value="{!S}"/>
+                 <apex:commandButton Value="Search Accounts" action="{!SearchAccount}" />    
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Account Table">
+            <apex:pageBlockSection title="Table Information with Name & Rating"> 
+                <apex:pageBlockTable value="{!AccountList}" var="acc"> 
+                    
+                    <apex:column headerValue="Account Name" >
+                       <apex:commandLink value="{!acc.Name}" action="{!RelatedContactOrOpportunity}" rerender="conttable,opptable" >
+                        <apex:param value="{!acc.Id}" name="idForConts" assignTo="{!RecId}"/>
+                      </apex:commandLink>
+                    </apex:column>
+                   
+                    <apex:column headerValue="Account Rating" value="{!acc.Rating}">
+                    </apex:column>
+                    
+                    <apex:column headerValue="Account Owner" >
+                    </apex:column>
+                    
+                </apex:pageBlockTable>  
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:pageBlock title="Contacts">
+        <apex:pageBlockSection title="Related Contacts">
+           <apex:pageBlockTable value="{!contacts}" var="con" id="conttable">
+            <apex:column value="{!con.FirstName}" headerValue="Contact First Name"/>
+            <apex:column value="{!con.LastName}" headerValue="Contact Last Name"/>
+           </apex:pageBlockTable>
+        </apex:pageBlockSection>  
+    </apex:pageBlock>
+     
+    <apex:pageBlock title="Opportunities">
+         <apex:pageBlockSection title="Related Opportunities">
+            <apex:pageBlockTable value="{!opportunities}" var="opp" id="opptable">
+            <apex:column value="{!opp.Name}" headerValue="Opportunity Name"/>
+            <apex:column value="{!opp.StageName}" headerValue="Opportunity StageName"/>
+            <apex:column value="{!opp.CloseDate}" headerValue="Opportunity CloseDate"/>
+        </apex:pageBlockTable>
+    </apex:pageBlockSection>
+       
+    </apex:pageBlock>
+</apex:page>

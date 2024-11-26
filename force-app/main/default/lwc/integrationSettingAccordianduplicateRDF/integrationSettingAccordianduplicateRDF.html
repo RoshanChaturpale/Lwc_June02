@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Integration Settings">
+        <div class="slds-p-around_medium">
+            <!-- lightning-record-edit-form for creating a record -->
+            <lightning-record-edit-form 
+                object-api-name="Integration_Setting__c" 
+                onsuccess={handleSuccess}
+                onerror={handleError}>
+
+            
+            
+                <!-- Endpoint Field -->
+                <lightning-input-field field-name="API_Token__c" required></lightning-input-field>
+
+                <!-- Token Field -->
+                <lightning-input-field field-name="Endpoint__c" required></lightning-input-field>
+
+                <!-- Username Field -->
+                <lightning-input-field field-name="Username__c" required></lightning-input-field>
+
+                <!-- Password Field -->
+                <lightning-input-field field-name="Password__c" required></lightning-input-field>
+
+                <!-- Method (Picklist) -->
+                <lightning-input-field field-name="Method__c" required></lightning-input-field>
+
+                 <!-- Method (Picklist) -->
+                <lightning-input-field field-name="CRM_Customer__c" required></lightning-input-field>
+
+                <!-- Save Button -->
+                  <lightning-button label="Custom Submit Button" onclick={handleSubmit} variant="brand"></lightning-button>
+        
+
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+</template>

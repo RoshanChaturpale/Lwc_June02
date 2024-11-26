@@ -1,0 +1,223 @@
+<apex:page controller="apexPage_Validataion" standardStyleSheets="false" docType="html-5.0">
+    
+     <style>
+        label{
+        color:#0a2463;
+        font-weight:600;
+        }
+        .form-control{
+        border-color: #0a2463 !important; 
+        }
+    </style>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    
+    <div class="Container-fluid" style="background: #0a2463;">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8" style="padding: 1.5rem;">
+                <apex:form styleClass="form-horizontal" id="frm">
+                    
+                    <apex:actionFunction name="CallApexMethod" action="{!createLead}"/>
+                    
+                    <div class="card" style="padding:1.5rem;"> 
+                        <h4 style="text-align:center;">Pre-Approval Request Form</h4>
+                        
+                        
+                        
+                        <center><div class="error" id="errorDisplay"></div></center>
+                        
+                        <div class="row p-2">
+                            
+                             <!--Name Field ------>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <div class = "requiredInput">
+                                        <div class = "requiredBlock"></div>
+                                        <label for="exampleInputEmail1" class="form-label"><span style="color:red">* </span>Name</label>
+                                        <apex:inputText styleClass="form-control inputboxes" id="nameField" label="Name" value="{!firstname}"/>
+                                        <div id="err1" style="font-size: 12px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                             <!--Email Field------>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label"><span style="color:red">* </span>Email</label>
+                                    <apex:inputText styleClass="form-control inputboxes" label="Email" id="emailField" value="{!email}"/>
+                                    <div id="err2" style="font-size: 12px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row p-2">
+                             <!--Phone Field ------>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <div class = "requiredInput">
+                                        <div class = "requiredBlock"></div>
+                                        <label for="exampleInputPassword1" class="form-label"><span style="color:red">* </span>Phone</label>
+                                        <apex:input type="number" styleClass="form-control inputboxes" id="phoneField" onkeyup="phoneCheck(this);" value="{!mobile}" />
+                                        <div id="err3" style="font-size: 12px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                             <!--Company field------>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Company</label>
+                                    <apex:inputText styleClass="form-control inputboxes"  value="{!company}"  />
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <!--TermAndCondition CheckBox ------>
+                        <div class="mb-3">
+                            <apex:inputCheckbox styleClass="form-check-input" value="{!termsandCondition}" id="termId"/>
+                            <label class="form-check-label boldTexts" for="exampleCheck1"><span style="color:red">* </span>I accept the Terms and Conditions.</label>
+                            <div id="err4" style="font-size: 12px;"></div>   
+                        </div>
+                        
+                         <!--Submit Button------>
+                        <div class="d-grid gap-2">
+                            <apex:commandButton style="color: #fff;font-weight:600;background: #0a2463;padding: 8px 20px 9px 20px;"  onclick="validateForm();"  value="Submit" id="theeButton"/>
+                            <apex:commandButton style="color: #222222;font-weight:600;background-color: #bdc3c7;border: 1px solid #bdc3c7;padding: 5px 15px 5px 15px;"  action="{!}" value="Back" id="theButton"/>
+                        </div>
+                        
+                    </div>                      
+                </apex:form>
+            </div>
+        </div>
+    </div>
+                        
+                      
+<script>
+    
+    
+    //if Phone digit is greater than 10, error messege with this  "onkeyup" event 
+        
+    function phoneCheck(element){
+        var errorMsg = element.nextElementSibling;
+        if (element.value.length > 10)
+        {
+            errorMsg.innerHTML = "Phone must be 10 digit long.";
+            errorMsg.style.color = "red";
+        }
+        else{
+            errorMsg.innerHTML = "";
+            errorMsg.style.color = "green";
+        }
+    }
+    
+    
+    
+     //vaidation thru Button event
+    function validateForm(){
+        
+        event.preventDefault();
+        
+        //for Email Field
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        
+        //For Name Field
+        var name = document.getElementById("{!$Component.frm.nameField}");
+        nameError = name.nextElementSibling;                                            
+        //alert(name.value.length);
+          
+        //for Email
+        var email = document.getElementById('{!$Component.frm.emailField}');
+        emailError = email.nextElementSibling;                                              
+        console.log('email'+email.value); 
+                                                     
+                                                     
+        //for Phone field with button event                                            
+        var phone = document.getElementById('{!$Component.frm.phoneField}');
+        phoneError = phone.nextElementSibling; 
+                                                     
+                                                     
+        //for CheckBox like termAndCondition                                             
+        var termsAndCondition = document.getElementById('{!$Component.frm.termId}');
+        nextElement = termsAndCondition.nextElementSibling;
+        conditionError =  nextElement.nextElementSibling;                                    
+        console.log('terms++'+JSON.stringify(termsAndCondition));                                       
+        console.log('term++'+termsAndCondition.checked);                                             
+                                                     
+                                                     
+                                                     
+       var isError = false;
+       
+       
+       if(!isError){
+           
+           //Name Field
+           if(name.value.length == 0)
+            {
+                nameError.innerHTML=" Please enter valid name.";
+                nameError.style.color = "red";
+                isError = true;
+            } 
+            else
+            {
+                nameError.innerHTML="";
+            }  
+           
+           //Email Field
+           if(email.value.length == 0 || !email.value.match(validRegex))
+            {
+                emailError.innerHTML=" Please enter valid email address.";
+                emailError.style.color = "red";
+                isError = true;
+            }
+            else{
+                emailError.innerHTML="";
+            }   
+           
+           //Phone Field with Button Event
+           if(phone.value.length == 0)
+            {
+                phoneError.innerHTML="Please enter valid phone.";
+                phoneError.style.color = "red";
+                isError = true;
+            }
+            else if(phone.value.length > 10){
+                phoneError.innerHTML="Phone must be 10 digit long.";
+                phoneError.style.color = "red";
+                isError = true;
+            }
+            else
+            {
+                phoneError.innerHTML="";
+            }  
+           
+           
+           //for CheckBox
+           if(termsAndCondition.checked == false) 
+            {
+                conditionError.innerHTML="Select terms and condition.";
+                conditionError.style.color = "red";
+                isError = true; 
+            }                                                                     
+            else
+            {  
+                conditionError.innerHTML="";
+            }
+       }
+       if (isError) 
+        {
+            console.log('Validation errors occurred.');
+        }    
+        else {
+            CallApexMethod();  
+        }    
+ }
+    
+    
+    </script>
+                    
+
+</apex:page>

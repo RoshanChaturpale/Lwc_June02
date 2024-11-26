@@ -1,0 +1,428 @@
+<apex:page controller="SL_createIsoGlobal"  standardStyleSheets="false" docType="html-5.0">
+    <style>
+        label{
+        color:#0a2463;
+        font-weight:600;
+        }
+        .form-control{
+        border-color: #0a2463 !important; 
+        }
+          .clsFieldset {    
+        margin-left: 2px;
+        margin-right: 2px;
+        margin-bottom: 5px;
+        padding-top: 0.35em;
+        padding-bottom: 0.625em;
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+        border: 1.3px groove;
+        border-color: #d4d9db;
+        border-radius:5px;
+        display: block;    
+        }
+        
+        .clsLegend {    
+        padding-left: 10px !important;
+        padding-right: 5px !important;
+        border: none;
+        display: block;
+        float: none !important;
+        width:30% !important;
+        color: #0a2463;
+        font-weight: 600;
+        font-size: 16px;
+        }
+
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    
+    
+    <div class="container-fluid" style="background: #0a2463;">
+        
+        <div class="row" style="padding:1.5rem">
+            <div class="col-2"></div>
+            <div class="col-8">
+              <!--  <c:SL_HeaderComponent IsoName="{!IsoName}" Logo="{!IsoLogo}" customerName="{!customerName}"/>  -->
+                <apex:form styleClass="form-horizontal" id="frm">
+                    <apex:actionFunction name="CallApexMethod" action="{!addISOProducts}"/>
+                    <div class="card" style="padding-left:2rem;padding-right:2rem; padding-bottom:2rem;">
+                        <br/>
+                        <h3 style="text-align:center;color:#0a2463">
+                            Lead Form
+                        </h3>
+                        <apex:pageMessages />
+                        <br/>
+                        <div class="row ">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <div class = "requiredInput">
+                                        <div class = "requiredBlock"></div>
+                                        <label for="exampleInputEmail1" class="form-label"><span style="color:red">* </span>First Name</label>
+                                        <apex:inputText styleClass="form-control inputboxes" label="First Name" value="{!firstName}" id="fName" onkeyup="firstNameCheck(this);"/>
+                                        <div id="err1" style="font-size: 12px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label"><span style="color:red">* </span>Last Name</label>
+                                    <apex:inputText styleClass="form-control inputboxes" label="Last Name"  value="{!lastName}"  id="lName" onkeyup="lastNameCheck(this);"/>
+                                    <div id="err2" style="font-size: 12px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label"><span style="color:red">* </span>Email</label>
+                                    <apex:inputText styleClass="form-control inputboxes" label="Email" value="{!email}"  id="emailField"/>
+                                    <div id="err3" style="font-size: 12px;"></div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <div class = "requiredInput">
+                                        <div class = "requiredBlock"></div>
+                                        <label for="exampleInputPassword1" class="form-label"><span style="color:red">* </span>Phone</label>
+                                        <apex:input type="number" styleClass="form-control inputboxes" label="Phone" value="{!mobile}" onkeyup="phoneCheck(this);" id="phoneField" />
+                                        <div id="err4" style="font-size: 12px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Company</label>
+                                <apex:inputText styleClass="form-control inputboxes"  value="{!company}"  />
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Pre Approval Notes</label>
+                            <apex:inputTextarea id="newDesc" styleClass="form-control inputboxes" value="{!preApprovedNoates}"/>
+                        </div>
+                        <div class="mb-3 ">
+                       
+                            <fieldset class="clsFieldset">
+                            <legend for="exampleInputPassword1" class="form-label clsLegend"><span style="color:red">* </span>Products Interested In</legend>
+                                <div class="error" id="errorDisplay" style="font-size: 12px;"></div>
+                           
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3 form-check">
+                                        <apex:inputCheckbox styleClass="form-check-input" value="{!bridgeFinancing}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!bridgeFinancing}">Bridge Financing</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!personalLoans}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!personalLoans}">Personal Loans</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!businessLoan}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!businessLoan}">Business Term Loan</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!personalCreditCards}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!personalCreditCards}">Personal Credit Cards</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!businessCreditCard}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!businessCreditCard}">Business Credit Cards</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!linesOfCredit}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!linesOfCredit}"> Business Lines of Credit</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!equipementFinance}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!equipementFinance}">Equipment Finance</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!HELOC}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!heloc}">HELOC (Home Equity Line of Credit)</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!residentialMortgage}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!residentialMortgage}">Residential Mortgage</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!commercialMortgage}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!commercialMortgage}">Commercial Mortgage</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!debtSettlement}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!debtSettlement}">Debt Settlement</label>
+                                    </div>
+                                    <div class="mb-3 form-check">                
+                                        <apex:inputCheckbox styleClass="form-check-input productCheckbox" value="{!debtMitigation}"/>
+                                        <label class="form-check-label" for="exampleCheck1" value="{!debtMitigation}">Debt Mitigation</label>
+                                    </div>
+                                </div>
+                                  </div>
+                                </fieldset>
+                            
+                            
+                                <div class="row ">
+                                    <div class="col-6">
+                                        <div class="mb-3 ">
+                                            <label for="exampleInputPassword1" class="form-label">Credit Report</label>
+                                            <apex:inputFile styleClass="form-control" value="{!fileBody}" filename="{!fileName}"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Personal Tax Returns</label>
+                                            <apex:inputFile styleClass="form-control" value="{!ptaBody}" filename="{!ptaFile}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Business Tax Returns</label>
+                                            <apex:inputFile styleClass="form-control" value="{!btaBody}" filename="{!btaFile}"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Other</label>
+                                            <apex:inputFile styleClass="form-control" value="{!otherBody}" filename="{!otherFile}"  fileSize="{!otherFileSize}" id="otherId"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">What Other Files Were Submitted</label>
+                                    <apex:inputTextarea id="newDesc1" styleClass="form-control inputboxes" value="{!whatOtherFilesWereSubmitted}"/>
+                                </div>
+                          
+                            
+                        </div>
+                        <div class="d-grid gap-2">
+                            <apex:commandButton style="color: #fff;font-weight:600;background: #0a2463;border-color: rgba(0,0,255,0.3);padding: 8px 20px 9px 20px;" onclick="validateForm();" value="Submit" id="theButton"/>                       
+                        </div>
+                    </div>
+                </apex:form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function getIEFileSize(file){
+        var myFSO = new ActiveXObject("Scripting.FileSystemObject"),
+        filepath = file.value,
+        thefile = myFSO.getFile(filepath);
+        return thefile.size;
+    }
+    
+    function phoneCheck(element){
+        console.log('called');
+        var errorMsg = element.nextElementSibling;
+        if (element.value.length > 10)
+        {
+    
+            errorMsg.innerHTML = "Phone must be 10 digit long.";
+            errorMsg.style.color = "red";
+        }
+        else{
+            errorMsg.innerHTML = "";
+            //errorMsg.style.color = "green";
+        }
+    }
+    
+    function firstNameCheck(element){
+        console.log('called');
+        var errorMsg = element.nextElementSibling;
+        if (element.value.length > 40)
+        {
+    
+            errorMsg.innerHTML = "First Name should be 40 character long.";
+            errorMsg.style.color = "red";
+        }
+        else{
+            errorMsg.innerHTML = "";
+            //errorMsg.style.color = "green";
+        }
+    }
+    
+    function lastNameCheck(element){
+        console.log('called');
+        var errorMsg = element.nextElementSibling;
+        if (element.value.length > 80)
+        {
+    
+            errorMsg.innerHTML = "Last Name should be 80 character long.";
+            errorMsg.style.color = "red";
+        }
+        else{
+            errorMsg.innerHTML = "";
+            //errorMsg.style.color = "green";
+        }
+    }
+    
+    function validateForm(){
+        event.preventDefault();
+        console.log('name');
+        //var checkboxes = document.getElementsByClassName('productCheckbox');
+        
+        
+        console.log(checkboxes);
+        var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        
+        var firstName = document.getElementById("{!$Component.frm.fName}");
+        fNameError = firstName.nextElementSibling;  
+        fNameRejex = /^[a-zA-Z ]*$/;                                            
+        console.log('firstName++'+firstName.value);
+                                                     
+         var lastName = document.getElementById("{!$Component.frm.lName}");
+        lNameError = lastName.nextElementSibling;
+         lNameRejex = /^[a-zA-Z ]*$/;                                               
+         console.log('lastName++'+lastName.value);                                            
+                                                     
+        //alert(name.value.length);
+        var email = document.getElementById('{!$Component.frm.emailField}');
+        emailError = email.nextElementSibling;                                              
+        console.log('email++'+email.value);
+                                                     
+        var phone = document.getElementById('{!$Component.frm.phoneField}');
+        phoneError = phone.nextElementSibling;  
+          console.log('phone+++'+phone.value); 
+                                                     
+                                                     
+                                                     
+          
+                                                     
+         //var otherFile = document.getElementById('{!$Component.frm.otherId}'); 
+         //var fileerror = otherFile.nextElementSibling;                                           
+                                                     
+        isSelected = false;
+        var checkboxes = document.getElementsByClassName('productCheckbox');                                             
+            for(i = 0; i < checkboxes.length; i++){
+             if(checkboxes[i].checked){
+             isSelected = true;
+                 break;
+             }
+         
+         }                                          
+                                                     
+        var isError = false;                                            
+        if(!isError){ 
+            
+            if(firstName.value.length == 0 || !firstName.value.match(fNameRejex) )
+            {
+                fNameError.innerHTML=" Please enter valid first name.";
+                fNameError.style.color = "red";
+                isError = true;
+            } 
+            else if(firstName.value.length > 40){
+                fNameError.innerHTML="First Name should be 40 character long.";
+                fNameError.style.color = "red";
+                isError = true;
+            }
+            else
+            {
+                fNameError.innerHTML="";
+            } 
+            
+             if(lastName.value.length == 0 || !lastName.value.match(lNameRejex))
+            {
+                lNameError.innerHTML=" Please enter valid last name.";
+                lNameError.style.color = "red";
+                isError = true;
+            } 
+            else if(lastName.value.length > 80){
+                lNameError.innerHTML="Last Name should be 80 character long.";
+                lNameError.style.color = "red";
+                isError = true;
+            }
+            else
+            {
+                lNameError.innerHTML="";
+            }           
+            if(email.value.length == 0 || !email.value.match(emailRegex))
+            {
+                emailError.innerHTML=" Please enter valid email address.";
+                emailError.style.color = "red";
+                isError = true;
+            }
+            else{
+                emailError.innerHTML="";
+            }                                   
+            if(phone.value.length == 0)
+            {
+                phoneError.innerHTML="Please enter valid phone.";
+                phoneError.style.color = "red";
+                isError = true;
+            }
+            else if(phone.value.length > 10){
+                phoneError.innerHTML="Phone must be 10 digit long.";
+                phoneError.style.color = "red";
+                isError = true;
+            }
+            else
+            {
+                phoneError.innerHTML="";
+            }  
+        }
+                                                     
+         if (!isSelected){
+             document.getElementById('errorDisplay').innerHTML = 'Please select at least one product excluding Bridge Financing.';
+             document.getElementById('errorDisplay').style.color = "red";
+             isError = true;
+        }
+         else{
+         document.getElementById('errorDisplay').innerHTML = '';
+         console.log('successs');
+             //CallApexMethod();
+         }   
+                                                     
+                                                     
+         var goodSize = false;
+           console.log('outside');                                          
+        $('input[type=file]').each(function()
+        {
+            console.log('inside1');
+            if(typeof this.files[0] !== 'undefined')
+                
+            {
+                console.log('inside2');
+                var file = this.files[0],
+                size = typeof ActiveXObject !== 'undefined' ?
+                    getIEFileSize(file):
+                    
+                    file.fileSize || file.size;
+                   console.log('inside3');
+                goodSize = 2000000 > size;
+                if(!goodSize)
+                {
+                    alert(this.files[0].name +' is too large - please choose a file that is 2Mb or less');
+                    isError = true;
+                }
+                 else
+                {
+                	if (2000000  < size)
+                	{
+                    	console.log('Upload file');
+                    }
+                }
+
+          //return goodSize;
+            }
+        });
+        //return goodSize;                                            
+                                                                                                
+        if (isError) 
+        {
+            console.log('Validation errors occurred.');
+        }    
+        else {
+            console.log('call apex method success');
+            CallApexMethod();  
+        }                                    
+    }
+    </script>
+</apex:page>

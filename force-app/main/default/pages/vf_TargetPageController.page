@@ -1,0 +1,15 @@
+<apex:page controller="vf_TargetPageController">
+    <apex:sectionHeader title="Target Page" subtitle="Page Navigation"/> 
+<apex:form >
+ <apex:pageblock title="Target Page">
+ <apex:commandButton value="Goto Source Page" action="{!GotoSourcePage}" />
+ 
+ <apex:pageblockSection title="Search Results: ( {!lstAccounts.size} )" collapsible="false" columns="1">
+ <apex:pageblockTable value="{!lstAccounts}" var="acc">
+ <apex:column value="{!acc.Name}"/>
+ 
+ </apex:pageblockTable>
+ </apex:pageblockSection>
+ </apex:pageblock>
+</apex:form>
+</apex:page>

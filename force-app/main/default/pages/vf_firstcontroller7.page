@@ -1,0 +1,36 @@
+<apex:page controller="vf_firstController7">
+
+    <apex:form >
+        <apex:actionFunction name="CallApexMethod" />
+        <!---  <apex:pageMessages />   -->
+
+        <label>Last Name:</label>
+        <apex:inputText value="{!LeadlastName}" id="nameField" onblur="validateLastName(event)"/><br />
+        <span id="lastNameError" style="color: red;"></span><br />
+
+        <label>Company:</label>
+        <apex:inputText value="{!Leadcompany}" /><br />
+
+        <label>Email:</label>
+        <apex:inputText value="{!LeadEmail}" /><br />
+
+        <label>Phone Number:</label>
+        <apex:inputText value="{!LeadPhone}" /><br />
+
+        <apex:commandButton value="Sign Up" action="{!Method1}" />
+    </apex:form>
+
+    <script>
+        function validateLastName(event) {
+            var lastNameInput = document.getElementById("{!$Component.nameField}");
+            var lastNameError = document.getElementById("lastNameError");
+
+            if (lastNameInput.value.trim() === "") {
+                lastNameError.innerHTML = "Please enter a valid last name.";
+            } else {
+                lastNameError.innerHTML = "";
+            }
+        }
+    </script>
+
+</apex:page>

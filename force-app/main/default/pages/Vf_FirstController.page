@@ -1,0 +1,24 @@
+<apex:page controller="Vf_FirstController">
+    <apex:form >
+        
+        <apex:pageMessages id="Errors"> </apex:pageMessages>
+        
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Addition" action="{!Addition}"/>
+                <apex:commandButton value="Subtraction" action="{!Subtraction}"/>
+                <apex:commandButton value="Multiplication" action="{!Multiplication}"/>
+                <apex:commandButton value="Division" action="{!Division}"/>
+            </apex:pageBlockButtons>
+       
+        <apex:pageBlockSection >
+            
+            <apex:inputText label="Enter First Number"  value="{!a}"/> 
+            <apex:inputText label="Enter Second Number" value="{!b}"/>
+            
+            <apex:outputLabel >The Result is===== {!Result}</apex:outputLabel>
+        </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+
+</apex:page>

@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Datatable Example" icon-name="custom:custom63">
+      <div class="slds-m-around_medium">
+        <template if:true={contacts.data}>
+          <lightning-datatable key-field="Id" data={data} columns={columns} onsave={handleSave} draft-values={draftValues}>
+          </lightning-datatable>
+        </template>
+
+        <template if:false={contacts.error}>
+          data not present...
+        </template>
+      </div>
+    </lightning-card>
+  </template>

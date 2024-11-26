@@ -1,0 +1,38 @@
+<!----
+Design a VisualForce Page to Create the New Account Records. 
+1. Needs to verify the Duplicate Account Records based on the Name.
+2. Record should be created, if No Duplicates Found in the object.
+3. Display the Error Message, if any Duplicate Records Found.
+
+---->
+
+
+<apex:page StandardController="Account" extensions="vf_firstcontroller5" setup="false" sidebar="false" 
+showheader="true"  >
+<apex:sectionHeader title="Account" subtitle="New Account"/> 
+<apex:form >
+ <apex:pageblock title="Account Edit">
+ 
+ <apex:pagemessages id="errors"> </apex:pagemessages>
+ 
+ <apex:pageblockButtons location="both">
+ <apex:commandButton value="Save" action="{!ValidateDuplicateAccounts}" rerender="errors"/>
+ <apex:commandButton value="Cancel" action="{!Cancel}"/>
+ </apex:pageblockButtons>
+ 
+ <apex:pageblockSection title="Account Details" columns="2" collapsible="true">
+ <apex:inputfield value="{!Account.Name}"/>
+ <apex:inputfield value="{!Account.Account_Email__c}"  required="true"/>
+ <apex:inputfield value="{!Account.AccountNumber}"/>
+ <apex:inputfield value="{!Account.Site}"/>
+ <apex:inputfield value="{!Account.Rating}" required="true"/>
+ <apex:inputfield value="{!Account.Industry}"/>
+ <apex:inputfield value="{!Account.AnnualRevenue}"/>
+ <apex:inputfield value="{!Account.Phone}"/>
+ <apex:inputfield value="{!Account.Fax}"/>
+ <apex:inputfield value="{!Account.Active__c}"/>
+ <apex:inputfield value="{!Account.Type}"/>
+ </apex:pageblockSection>
+ </apex:pageblock>
+</apex:form>
+</apex:page>

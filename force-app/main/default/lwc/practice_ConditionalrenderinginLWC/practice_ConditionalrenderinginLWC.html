@@ -1,0 +1,22 @@
+<template>
+
+    <lightning-card  variant="Narrow"  title="Conditional rendering in lightning web component" icon-name="standard:account">
+        
+    
+    <template if:true={fName}>
+      <h1>First Name is Roshan</h1>
+    </template>
+
+
+   
+    <template if:false={lName}>
+        <h1>Last Name is Chaturpale</h1>
+    </template>
+    
+    <lightning-button label="Show first name" onclick={showFirstName}></lightning-button>    
+
+    <lightning-button label="Show first name" onclick={showLastName}></lightning-button>
+    </lightning-card>
+
+   
+</template>

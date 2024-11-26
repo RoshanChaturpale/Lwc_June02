@@ -1,0 +1,87 @@
+<template>
+    <lightning-card title="Integration Settings">
+        <lightning-accordion allow-multiple-sections-open>
+            <!-- Inverite Section -->
+            <lightning-accordion-section  label="Inverite">
+                <div class="slds-m-around_medium">
+
+                     <lightning-datatable key-field="id" data={integrationData} columns={columns} hide-checkbox-column="true">
+
+                     </lightning-datatable>
+                 </div>
+
+            </lightning-accordion-section>
+
+
+
+
+        
+            <lightning-accordion-section  label="Inverite01">
+                <div class="slds-m-around_medium">
+
+                    <template if:true={integrationData}>
+                        <template for:each={integrationData} for:item="setting">
+                            <lightning-layout key={setting.Id}>
+                                <lightning-layout-item size="12">
+                                    <p><strong>Name:</strong> {setting.Name}</p>
+                                    <p><strong>API Token:</strong> {setting.API_Token__c}</p>
+                                    <p><strong>Endpoint:</strong> {setting.Endpoint__c}</p>
+                                    <p><strong>Username:</strong> {setting.Username__c}</p>
+                                    <p><strong>Method:</strong> {setting.Method__c}</p>
+                                    <p><strong>CRM Customer:</strong> {setting.CRM_Customer__c}</p>
+
+                                    <hr />
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </template>
+                    </template>
+                    <template if:false={integrationData}>
+                        <p>No Integration Settings found.</p>
+                    </template>
+                </div>
+            </lightning-accordion-section>
+
+
+
+
+            <!-- Flinks Section -->
+            <lightning-accordion-section  label="Flinks">
+                <div class="slds-m-around_medium">
+
+                 </div>
+
+            </lightning-accordion-section>
+
+
+            <!-- PandaDoc Section -->
+            <lightning-accordion-section  label="PandaDoc">
+                <div class="slds-m-around_medium">
+                    
+                 </div>
+
+            </lightning-accordion-section>
+
+
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </lightning-accordion>
+    </lightning-card>
+</template>

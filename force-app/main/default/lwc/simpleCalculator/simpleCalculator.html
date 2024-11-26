@@ -1,0 +1,24 @@
+<template>
+
+
+    <lightning-card variant="Narrow" title="Calculator" icon-name="standard:account" >
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="number" value="input1" label="Enter a first number" onchange={onChangedhandllerWithFirstValue}></lightning-input>
+        </div>
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="number" value="input2" label="Enter a second number" onchange={onChangedhandllerWithSecondValue}></lightning-input>
+        </div>
+
+        <div class="slds-p-around_medium lgc-bg">
+            <button class="slds-button slds-button_neutral" onclick={onClickAddition}>Addition +</button>
+            <button class="slds-button slds-button_neutral" onclick={onClickSubtraction}>Subtraction -</button>
+            <button class="slds-button slds-button_neutral" onclick={onClickMultiplication}>Multiplication *</button>
+            <button class="slds-button slds-button_neutral" onclick={onClickdivision}>Division /</button>
+        </div>
+
+        <div class="slds-p-around_medium lgc-bg">
+            <P> the result of <b>{input1}</b> and <b>{input2}</b> is ==> <b>{Result}</b></P>
+        </div>
+    </lightning-card>
+    
+</template>

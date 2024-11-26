@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="@wire decorator - practice" icon-name="standard:account">
+        <template if:true={contacts.data}>
+            <template for:each={contacts.data} for:item="con">
+                <p key={con.Id}>
+                    {con.FirstName} {con.LastName}
+                </p>
+            </template>
+        </template>
+        <template if:true={contacts.error}>
+            <p>{contacts.error}</p>
+        </template>
+    </lightning-card>
+</template>

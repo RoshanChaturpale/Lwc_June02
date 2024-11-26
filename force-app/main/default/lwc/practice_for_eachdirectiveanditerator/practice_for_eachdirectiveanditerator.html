@@ -1,0 +1,16 @@
+<template>
+
+    <lightning-card  variant="Narrow"  title="for:each directive and iterator directive in lightning web component" icon-name="standard:account">
+        
+        <template for:each={students} for:item="item" for:index="index">
+
+            <p key={item.id}>
+                {item.Name}
+                {item.designation}
+            </p>
+
+        </template>
+        
+    </lightning-card>
+
+</template>

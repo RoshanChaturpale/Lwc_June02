@@ -1,0 +1,18 @@
+<apex:page controller="LeadController">
+    <apex:form >
+        <apex:pageBlock title="Create New Lead and Tasks">
+            <apex:pageMessages />
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!createLeadAndTask}" value="Create Lead and Tasks"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Lead Information" columns="2">
+                <apex:inputField value="{!newLead.FirstName}" required="true" label="First Name"/>
+                <apex:inputField value="{!newLead.LastName}" required="true" label="Last Name"/>
+                <apex:inputField value="{!newLead.Company}" required="true" label="Company"/>
+                <apex:inputField value="{!newLead.Email}" required="true" label="Email"/>
+                <apex:inputField value="{!newLead.Phone}" required="true" label="Phone"/>
+                <apex:inputField value="{!newLead.Status}" required="true" label="Lead Status"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

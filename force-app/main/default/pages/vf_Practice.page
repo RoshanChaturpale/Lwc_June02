@@ -1,0 +1,5 @@
+<apex:page controller="vf_practice"  setup="false" sidebar="false" showheader="true">
+
+
+
+</apex:page>

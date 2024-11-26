@@ -1,0 +1,34 @@
+<apex:page controller="vf_Apex">
+    <apex:form >
+        <apex:messages ></apex:messages>
+        <apex:pageBlock title="Account Information">
+            <apex:pageBlockSection >
+                <apex:inputField value="{!newAccount.Name}" label="Account Name"/>
+                <apex:inputField value="{!newAccount.Phone}" label="Phone"/>
+                <apex:inputField value="{!newAccount.Website}" label="Website"/>
+                <apex:inputField value="{!newAccount.Industry}" label="Industry"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!saveAccount}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:form >
+        <apex:pageBlock title="Search" >
+            <apex:pageBlockSection title="Seach Section" >
+                <apex:inputText label="Search Account Name" value="{!s}" />
+                <apex:commandButton value="Search Name" action="{!SearchAccountName}"/>
+                
+                <apex:pageBlockSection title="Account Name Information" >
+                    <apex:pageBlockTable value="{!accountList}" var="accl">
+                        <apex:column value="{!accl.Name}" headerValue="Name"/>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+     
+
+</apex:page>

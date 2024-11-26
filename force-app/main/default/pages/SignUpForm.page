@@ -1,0 +1,21 @@
+<apex:page standardStyleSheets="false" docType="html-5.0">
+    
+    <style>
+        
+     
+    
+    </style>
+    
+    
+    <apex:form >
+        
+        <div id="a">
+            
+            
+            <label for="exampleInputEmail1" class="form-label"><span style="color:red">* </span>First Name</label>
+            <apex:inputText styleClass="form-control inputboxes" label="First Name" id="fName"/>
+
+        </div>
+    
+    </apex:form>
+</apex:page>

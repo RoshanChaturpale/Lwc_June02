@@ -1,0 +1,26 @@
+<template>
+
+    <lightning-card variant="Narrow" title="Table" icon-name="standard:account" >
+
+
+        <template if:true={searchAcc.data}>
+            <template for:each={searchAcc.data} for:item="h">
+
+                <p key={h.Id}>
+                    Name = {h.Name}
+                </p>
+            </template>
+        </template>
+
+        <template if:false={searchAcc.Data}>
+            No data Present
+        </template>
+        
+                
+
+         
+
+
+
+    </lightning-card>
+</template>

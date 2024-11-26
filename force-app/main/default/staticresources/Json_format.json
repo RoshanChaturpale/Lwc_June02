@@ -1,0 +1,12 @@
+{
+"status" : "success",
+"data": [
+      {
+	 "id": "1",
+	 "Employee_name": "Roshan Chaturpale",
+	 "Employee_salary" : "320800",
+	 "Employee_age" : "30",
+	 "profile_image" : ""
+      }
+      ]
+}

@@ -1,0 +1,15 @@
+<apex:page controller="Vf_Controller4"   >
+   
+   <apex:pageBlock >
+       <apex:pageBlockSection >
+         <apex:pageBlockTable value="{!ListHotelRec}" var="a">
+             
+             <apex:column value="{!a.Hotel_Name__c}"></apex:column>
+           
+       </apex:pageBlockTable>
+       </apex:pageBlockSection>
+       
+    
+    </apex:pageBlock>
+    
+</apex:page>

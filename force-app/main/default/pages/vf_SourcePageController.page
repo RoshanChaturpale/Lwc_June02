@@ -1,0 +1,12 @@
+<apex:page controller="vf_SourcePageController" setup="false" sidebar="false" showheader="true">
+   
+      <apex:sectionHeader title="Source-Page" subtitle="Page-Navigation"/>
+         <apex:form >
+             <apex:pageBlock title="Source-Page">
+                 <apex:pageBlockSection title="Search-Account" collapsible="true" columns="2">
+                     <apex:inputText label="Enter Account Name" html-placeholder="enter accouont Name" value="{!SearchText}"/>
+                     <apex:commandButton value="Search-Account" action="{!SearchAccount}" />
+                 </apex:pageBlockSection>
+             </apex:pageBlock>
+         </apex:form>
+</apex:page>

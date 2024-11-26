@@ -1,0 +1,22 @@
+<apex:page controller="vf_firstcontroller6" setup="false" sidebar="false" showheader="true">
+    <apex:sectionHeader title="Accounts" subtitle="Accounts Pagination"/>
+    <apex:form >
+        <apex:pageBlock title="Accounts PageBlock" id="pgBlock">
+            <apex:pageBlockSection >
+                <apex:inputText value="{!searchKeyword}" />
+                <apex:commandButton value="Search" action="{!controller.First}" rerender="pgBlock" />
+                <apex:commandButton value="Clear" action="{!clearSearch}" rerender="pgBlock" />
+            </apex:pageBlockSection>
+            <apex:pageBlockTable value="{!Accounts}" var="acc">
+                <apex:column value="{!acc.Name}" headerValue="AccountName"/>
+            </apex:pageBlockTable>
+            <center>
+                <apex:outputText >Of {!controller.resultSize}</apex:outputText> &nbsp;&nbsp;
+                <apex:commandLink value="First" action="{!controller.First}" rerender="pgBlock" rendered="{!controller.hasPrevious}"/> &nbsp;&nbsp;
+                <apex:commandLink value="Previous" action="{!controller.Previous}" rerender="pgBlock" rendered="{!controller.hasPrevious}"/> &nbsp;&nbsp;
+                <apex:commandLink value="Next" action="{!controller.Next}" rerender="pgBlock" rendered="{!controller.hasNext}"/> &nbsp;&nbsp;
+                <apex:commandLink value="Last" action="{!controller.Last}" rerender="pgBlock" rendered="{!controller.hasNext}"/>
+            </center>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

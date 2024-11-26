@@ -1,0 +1,44 @@
+<template>
+    <lightning-card title="Integration Settings">
+          <lightning-accordion allow-multiple-sections-open>
+            <!-- Flinks Section -->
+            <lightning-accordion-section  label="Inverite">
+                <div class="slds-m-around_medium">
+
+                    <lightning-input label="Name" value={name} onchange={handleInputChange} data-id="name"></lightning-input>
+                    <lightning-input label="API Name" value={apiName} onchange={handleInputChange} data-id="apiName"></lightning-input>
+                    <lightning-input label="Endpoint" value={endpoint} onchange={handleInputChange} data-id="endpoint"></lightning-input>
+                    <lightning-input label="Username" value={username} onchange={handleInputChange} data-id="username"></lightning-input>
+                    <lightning-input type="password" label="Password" value={password} onchange={handleInputChange} data-id="password"></lightning-input>
+                    <lightning-combobox label="CRM Customer" value={crmcustomer} options={crmcustomeroptions} onchange={handleMethodChangee}></lightning-combobox>
+                    <lightning-combobox label="Method" value={method} options={methodOptions} onchange={handleMethodChange}></lightning-combobox>
+                    </br>
+                    <lightning-button label="Save" onclick={handleSave} variant="brand"></lightning-button>
+                </div>
+            </lightning-accordion-section>
+
+
+            <!-- Flinks Section -->
+            <lightning-accordion-section  label="Flinks">
+                <div class="slds-m-around_medium">
+
+                 </div>
+
+            </lightning-accordion-section>
+
+
+            <!-- PandaDoc Section -->
+            <lightning-accordion-section  label="PandaDoc">
+                <div class="slds-m-around_medium">
+                    
+                 </div>
+
+            </lightning-accordion-section>
+        
+        
+        
+        
+        </lightning-accordion>
+    </lightning-card>
+
+</template>

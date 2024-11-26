@@ -1,0 +1,39 @@
+<apex:page controller="VF_firstController1">
+    
+    <!---Apex Form--->
+    <apex:form >
+        
+         <!---Validation According to the Scenario based rule--->
+        <apex:pageMessages ></apex:pageMessages>
+        
+         <!---Page block 1--->
+        <apex:pageBlock title="Search Account Block" rendered="true">
+             <!---PageBlockSection--->
+            <Apex:pageBlockSection title="Search Account" Columns="2">   
+                
+                    <apex:inputText label="Enter Search Text" value="{!a}"/>
+                    <apex:commandButton Value="Search Accounts" action="{!SearchAccount}"/>        
+            </Apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        
+          <!---Page block 2--->
+         <apex:pageBlock title="Search Result" rendered="true">
+             <Apex:pageBlockSection title="Account id && Name based on Search">
+                 <apex:pageBlockTable value="{!accountlist}" var="acc">
+                     
+                     <apex:column headerValue="Account Name" >
+                     <apex:outputLink value="/{!acc.id}" target="_blank" >{!acc.Name}</apex:outputLink>
+                     </apex:column>
+                     
+                     <apex:column value="{!acc.Phone_Code__c}"/>
+                 </apex:pageBlockTable>
+             </Apex:pageBlockSection>
+         </apex:pageBlock>
+        
+          
+    
+    </apex:form>
+    
+ 
+</apex:page>

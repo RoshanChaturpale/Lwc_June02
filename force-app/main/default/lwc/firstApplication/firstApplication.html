@@ -1,0 +1,40 @@
+<template>
+
+    <lightning-card variant="Narrow" title="Introduction" icon-name="standard:account" >
+        <h1 class="slds-p-around_medium lgc-bg">this is my first-application with lwc</h1>
+        
+        <div class="slds-p-around_medium lgc-bg">
+            <button class="slds-button slds-button_brand" onclick={showFormEventHandller}>Show-Form</button>
+            
+        </div> 
+    </lightning-card>
+
+
+    <template if:true={showSubmitForm}>
+        <lightning-card variant="Narrow" title="Admission-Form" icon-name="standard:account" >
+
+            <div class="slds-p-around_medium lgc-bg">
+                <button class="slds-button slds-button_destructive" onclick={hideFormEventHandller}>Hide-Form</button>
+            </div>
+
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input type="text" label="Name" placeholder="type here..." minlength="6"></lightning-input>
+            </div>
+    
+            <div class="slds-p-around_medium lgc-bg">
+                <button class="slds-button slds-button_brand" style="width: 100%" ondblclick={submitFormEventHandller}>Submit Form</button>
+            </div>
+    
+        </lightning-card> 
+    </template>
+    <template if:false={showSubmitForm}>
+
+        <p> click on this Show-Form Button for submit form</p>
+
+    </template>
+
+
+
+    
+    
+</template>

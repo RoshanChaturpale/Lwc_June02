@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Contact Manager" icon-name="standard:contact">
+        <div class="slds-m-around_medium">
+            <lightning-input
+                name="LastName"
+                label="Last Name"
+                value={contact.LastName}
+                onchange={handleInputChange}
+            ></lightning-input>
+            <lightning-input
+                name="Email"
+                label="Email"
+                value={contact.Email}
+                onchange={handleInputChange}
+            ></lightning-input>
+            <lightning-button
+                class="slds-m-top_small"
+                label="Create Contact"
+                onclick={handleCreateContact}
+            ></lightning-button>
+        </div>
+    </lightning-card>
+</template>
