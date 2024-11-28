@@ -19,6 +19,7 @@ export default class ChildLwc extends LightningElement {
     mult(event){
 
        const multuplyNumber = event.target.value();
+        alert('multuplyNumber' , multuplyNumber);
 
         this.dispatchEvent(new CustomEvent('mulvalue',{detail:multuplyNumber}))
 

@@ -1,7 +1,4 @@
 import { LightningElement ,track } from 'lwc';
-
-
-
 export default class Practice_ConditionalrenderinginLWC extends LightningElement {
 
     @track fName = true;
