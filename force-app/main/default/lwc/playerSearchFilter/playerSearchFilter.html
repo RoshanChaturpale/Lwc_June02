@@ -1,0 +1,26 @@
+<template>
+
+
+<lightning-card title="Crickert LWC Component">
+
+    <!-- Neutral variant (default) -->
+    
+    <lightning-button label="New Crickets"  onclick={createCricketers}  slot="actions"></lightning-button>
+
+
+    <div class="slds-align_absolute-center">
+    <lightning-combobox  value={selectedCricketerNationality}
+                          options={optionsArray}
+                          onchange={handleOptionChanged}>
+    </lightning-combobox>
+</div>
+
+ 
+</lightning-card>
+
+<div class="slds-m-top_small">
+<c-player-search-results></c-player-search-results>
+
+</div>
+    
+</template>

@@ -13,15 +13,6 @@ export default class Lifecyclehooks_Constructor extends LightningElement {
     }
 
 
-    //ConnectedCallBack with Example
-   connectedCallback()
-    {
-        console.log('Inside connected callback');
-    }
-
-    //disConnectedCallBack with Example
-     disconnectedCallback(){
-        console.log('Inside disconnected callback');
-    }
+    
 
 }
