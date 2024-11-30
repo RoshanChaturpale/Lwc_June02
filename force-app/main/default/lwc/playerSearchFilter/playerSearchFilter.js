@@ -11,8 +11,9 @@ export default class PlayerSearchFilter extends NavigationMixin(LightningElement
     picklistValues;
     optionsArray;
     selectedCricketerNationality = 'Select Value';
+    selectCrickerPlayerId;
 
-    //call getPicklistValues call record api id
+    //call record api id
     @wire(getObjectInfo, {objectApiName: CricketerObject})
     ObjectInfos({data, error}){  
 
@@ -20,15 +21,19 @@ export default class PlayerSearchFilter extends NavigationMixin(LightningElement
             console.log('error:' +JSON.stringify(error));
         }else if(data){
 
+          //this.recordTypeId = data;
+          //console.log('this.recordTypeId' +JSON.stringify(this.recordTypeId));
+
+          //we add defaultRecordTypeId(record detail page id)
             this.recordTypeId = data.defaultRecordTypeId;
-            console.log('this.recordTypeId'  + this.recordTypeId);
+             console.log('this.recordTypeId'  + this.recordTypeId);
            // console.log('this.recordTypeId' +JSON.stringify(this.recordTypeId));
 
         }
 
     }
 
-    //
+    //get picklist value
     @wire(getPicklistValues, {recordTypeId: '$recordTypeId' , fieldApiName: Nationality_Field})
     nationalityFieldValues({data, error}){
 
@@ -38,9 +43,14 @@ export default class PlayerSearchFilter extends NavigationMixin(LightningElement
         }else if(data){
             let arr = [];
 
-            //
+            //Complete Data Set
+            //this.picklistValues = data;
+            //onsole.log('data :' +JSON.stringify(this.picklistValues));
+
+
+            //data values
             this.picklistValues = data.values;
-            console.log('data :' +JSON.stringify(data));
+            console.log('this.picklistValues :' +JSON.stringify(this.picklistValues));
 
            //foreach loop
             this.picklistValues.forEach( element =>{
@@ -72,7 +82,19 @@ export default class PlayerSearchFilter extends NavigationMixin(LightningElement
     handleOptionChanged(event){
 
         this.selectedCricketerNationality = event.detail.value;
-        console.log('this.selectedCricketerNationality' +JSON.stringify(this.selectedCricketerNationality));
+        console.log('this.selectedCricketerNationality' + JSON.stringify(this.selectedCricketerNationality));
+
+
+        //callchild Componet js method called searchCricketers
+        this.template.querySelector('c-player-search-results').searchCricketers(this.selectedCricketerNationality);
+    }
+
+    handleCustomEvent(event){
+
+        console.log('handleCustomEvent');
+
+        this.selectCrickerPlayerId = event.detail.PlayerId;
+        console.log(' this.selectCrickerPlayerId : ' +JSON.stringify( this.selectCrickerPlayerId));
 
     }
 }

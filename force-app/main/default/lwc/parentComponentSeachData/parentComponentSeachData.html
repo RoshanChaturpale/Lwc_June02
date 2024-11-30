@@ -1,0 +1,15 @@
+<template>
+
+    <lightning-card title="Search Account data - parent to child"> 
+
+         <!-- Default/basic -->
+         <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="text" value={fname} label="Search Acccount Data" onchange={onChangeEventHandler}></lightning-input>
+        </div>
+
+    </lightning-card>
+
+
+    <c-child-component-show-data></c-child-component-show-data>
+    
+</template>

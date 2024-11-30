@@ -15,11 +15,21 @@
     </lightning-combobox>
 </div>
 
+
+<!-- click on child card and show selected record id in parent card below combobox -->
+<template if:true={selectCrickerPlayerId}>
+
+    <p>dfghfgh</p>
+    <div class="slds-align_absolute-center">
+        <h1>Selected Player Id : {selectCrickerPlayerId}</h1>
+    </div>
+</template>
+
  
 </lightning-card>
 
 <div class="slds-m-top_small">
-<c-player-search-results></c-player-search-results>
+<c-player-search-results onselect={handleCustomEvent}></c-player-search-results>
 
 </div>
     

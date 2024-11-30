@@ -1,0 +1,20 @@
+<template>
+    <template if:true={accountData}>
+        <lightning-card title="Account Data" icon-name="standard:account" class="slds-var-m-around_medium">
+            <div class="slds-p-around_medium">
+                <lightning-datatable
+                    key-field="Id"
+                    data={accountData}
+                    columns={columns}
+                    hide-checkbox-column
+                    class="slds-var-m-around_medium">
+                </lightning-datatable>
+            </div>
+        </lightning-card>
+    </template>
+    <template if:true={error}>
+        <lightning-card title="Error" icon-name="utility:error" class="slds-var-m-around_medium">
+            <p class="slds-text-color_error slds-p-around_medium">Error: {error.body.message}</p>
+        </lightning-card>
+    </template>
+</template>

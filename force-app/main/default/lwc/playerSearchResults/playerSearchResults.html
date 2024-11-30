@@ -7,18 +7,18 @@
 
                 <template if:true={cricketersData}>
                     
-                    <template for:each={cricketersData} for:item="players">
+                    <template for:each={cricketersData} for:item="player">
 
-                        <lightning-layout-item size="3" key={players.id} padding="around-small" class="slds-align_absolute-center">
+                        <lightning-layout-item size="4" key={player.id} padding="around-small" class="slds-align_absolute-center">
 
-                            <div class="title_wrapper" onclick={handleClickPlayerCard} data-id={players.id}>
+                            <div class="title_wrapper" onclick={handleClickPlayerCard} data-id={player.Id}>
                                 <div class="tile">
-                                    <img src={players.Image_Url__c} />
+                                    <img src={player.Image_Url__c} />
                                 </div>
-                                <div class="PlayerDate">
-                                    <h1 class="slds-text_heading_medium">{players.Name}</h1>
-                                    <p>Runs : {players.Runs__c}</p>
-                                    <p>Age : {players.Age__c}</p>
+                                <div class="Player_Data">
+                                    <h1 class="slds-text_heading_medium">{player.Name}</h1>
+                                    <p>Runs : {player.Runs__c}</p>
+                                    <p>Age : {player.Age__c}</p>
 
 
                                 </div>
