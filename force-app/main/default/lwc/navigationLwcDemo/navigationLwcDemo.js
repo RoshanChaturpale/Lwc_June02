@@ -90,6 +90,18 @@ export default class NavigationLwcDemo extends NavigationMixin(LightningElement)
     }
 
     //
+    showfile() {
+        this[NavigationMixin.Navigate]({
+            type: 'standard__namedPage',
+            attributes: {
+                pageName: 'filePreview'
+            },
+            state: {
+                recordIds: '069J3000005ej7WIAQ', // Comma-separated IDs
+                //selectedRecordId: '069J3000005ej7WIAQ' // Show first file
+            }
+        });
+    }
 
 
 
