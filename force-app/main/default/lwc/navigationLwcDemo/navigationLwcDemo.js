@@ -30,7 +30,7 @@ export default class NavigationLwcDemo extends NavigationMixin(LightningElement)
     onClickObectPageList(){ 
 
         this[NavigationMixin.Navigate]({
-            type :'standard__objectPage',
+            type :'standard__objectPage',   //target Object
             attributes :{
                 objectApiName : 'Account',
                 actionName : 'list'
@@ -45,21 +45,51 @@ export default class NavigationLwcDemo extends NavigationMixin(LightningElement)
     }
 
     
-    //Navigate to a Record Detail Page with View Mode (Account record detail page)
+    //Navigate to a Record Detail Page with "View" Mode or "edit" mode (Account record detail page)
     NavigatRecordDetailPage(){ 
 
         this[NavigationMixin.Navigate]({
-            type :'standard__recordPage',
+            type :'standard__recordPage',    //target record page
             attributes :{
                 recordId : '0015i00000en9pgAAA',    //currently add hard codded id
                 objectApiName : 'Account',
-                actionName : 'view'     //view and edit - two options
+                actionName : 'view'     //view or edit - two options
             },
          })
     }
 
+    // Create New Record
+    NavigateCreateNewAccountRecord(){
 
-    
+        this[NavigationMixin.Navigate]({
+            type :'standard__objectPage',    //target Create New AccountPAge
+            attributes :{
+                objectApiName : 'Account',
+                actionName : 'new'     //new
+            },
+            state : {
+                recordId : '012J3000000L3WCIA0',   //record types id
+            }
+         })
+
+    }
+
+
+
+    //
+    urlExternalSite(){
+
+        this[NavigationMixin.Navigate]({
+            type :'standard__webPage',    
+            attributes :{
+                url : 'https://www.google.com'
+                
+            }
+         })
+
+    }
+
+    //
 
 
 
