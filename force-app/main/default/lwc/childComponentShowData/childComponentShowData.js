@@ -1,5 +1,8 @@
 import { LightningElement, api, wire } from 'lwc';
 import getAccountData from '@salesforce/apex/apexClass_practice_LWC.getAccountData';
+import { updateRecord } from 'lightning/uiRecordApi';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { refreshApex } from '@salesforce/apex';
 
 
 export default class ChildComponentShowData extends LightningElement {
@@ -10,10 +13,10 @@ export default class ChildComponentShowData extends LightningElement {
 
     // Columns for the lightning-datatable
     columns = [
-        { label: 'Account ID', fieldName: 'Id', type: 'text' },
-        { label: 'Name', fieldName: 'Name', type: 'text' },
-        { label: 'Industry', fieldName: 'Industry', type: 'text' },
-        { label: 'Phone', fieldName: 'Phone', type: 'Phone' }
+        { label: 'Account ID', fieldName: 'Id', type: 'text'},
+        { label: 'Name', fieldName: 'Name', type: 'text' , editable: true,},
+        { label: 'Industry', fieldName: 'Industry', type: 'text' , editable: true, },
+        { label: 'Phone', fieldName: 'Phone', type: 'Phone' , editable: true,}
 
     ];
 
@@ -33,5 +36,42 @@ export default class ChildComponentShowData extends LightningElement {
             this.accountData = undefined;
             console.error('Error:', this.error);
         }
+    }
+
+    saveHandleAction(event) {
+        this.fldsItemValues = event.detail.draftValues;
+        const inputsItems = this.fldsItemValues.slice().map(draft => {
+            const fields = Object.assign({}, draft);
+            return { fields };
+        });
+ 
+ 
+        const promises = inputsItems.map(recordInput => updateRecord(recordInput));
+        Promise.all(promises).then(res => {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Success',
+                    message: 'Records Updated Successfully!!',
+                    variant: 'success'
+                })
+            );
+            this.fldsItemValues = [];
+            return this.refresh();
+        }).catch(error => {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: 'An Error Occured!!',
+                    variant: 'error'
+                })
+            );
+        }).finally(() => {
+            this.fldsItemValues = [];
+        });
+    }
+ 
+ 
+    async refresh() {
+        await refreshApex(this.accountData);
     }
 }

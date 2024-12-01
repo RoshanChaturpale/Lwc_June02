@@ -6,6 +6,8 @@
                     key-field="Id"
                     data={accountData}
                     columns={columns}
+                    onsave={saveHandleAction}
+                 draft-values={fldsItemValues} 
                     hide-checkbox-column
                     class="slds-var-m-around_medium">
                 </lightning-datatable>
