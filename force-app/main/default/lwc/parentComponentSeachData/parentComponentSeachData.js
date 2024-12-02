@@ -28,8 +28,6 @@ export default class ParentComponentSeachData extends NavigationMixin(LightningE
          })
     }
 
-    
-
 
 
 

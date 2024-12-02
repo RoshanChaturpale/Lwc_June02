@@ -3,7 +3,7 @@ public with sharing class apexClass_practice_LWC {
     @AuraEnabled(Cacheable = true)
     public static list<Account> getAccountData(String textkey) {
         textkey = '%' + textkey + '%';
-        list<Account> accLst = [SELECT  Id, Name, Industry, Phone, Type From Account WHERE Name LIKE :textkey];
+        list<Account> accLst = [SELECT  Id, Name, Industry, Phone, Type From Account WHERE Name LIKE :textkey limit 5];
         
         if(accLst.isEmpty()) {
             throw new AuraHandledException('No Record Found..');

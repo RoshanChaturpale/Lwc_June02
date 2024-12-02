@@ -43,5 +43,17 @@ public class accountData {
     public static List<Account> getAccountss(){
         return[select id, Name from Account Limit 10];
 }
+    
+    @AuraEnabled(cacheable=true)
+    public static List<Account> imperative_getAccountData(){
+        list<Account> accountList =[select id, Name, Rating , Phone from Account Limit 5];
+        return accountList;
+}
+    
+    @AuraEnabled
+    public static List<Account> comboBoxDemo_getAccount(){
+        list<Account> accountList =[select id, Name from Account];
+        return accountList;
+}
         
     }
