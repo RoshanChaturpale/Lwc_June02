@@ -5,12 +5,23 @@ export default class Practice_toast_notification extends LightningElement {
 
     
 
-    handleClick() {
-        this.showToast();
+    SuccesshandleClick() {
+        this.SuccessshowToast();
         console.log('handleClick');
     }
 
-    showToast() {
+    WarninghandleClick(){
+        this.WorningshowToast();
+
+    }
+
+    errorhandleClick(){
+        this.errorshowToast();
+
+    }
+
+    //Success toast Notification
+    SuccessshowToast() {
         const event = new ShowToastEvent({ // Correct capitalization
             title: 'Success',
             message: 'Want to display toast example',
@@ -18,4 +29,29 @@ export default class Practice_toast_notification extends LightningElement {
         });
         this.dispatchEvent(event); // Correctly dispatch the event
     }
+
+    //Warning toast Notification
+    WorningshowToast(){
+
+        const worningToast = new ShowToastEvent({
+            title : 'Worning',
+            message : 'Worning - messege with toast Notification',
+            variant : 'Warning'
+        });
+        this.dispatchEvent(worningToast);
+    }
+
+
+    //Error toast Notification
+    errorshowToast(){
+
+        const errorToast = new ShowToastEvent({
+            title : 'error',
+            message : 'error -  messege with toast Notification',
+            variant : 'Error'
+        });
+        this.dispatchEvent(errorToast);
+    }
+
+
 }

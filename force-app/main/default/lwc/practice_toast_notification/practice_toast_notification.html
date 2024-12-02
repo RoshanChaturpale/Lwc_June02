@@ -1,7 +1,14 @@
 <template>
 
-    <lightning-card icon-name="standard:account" variant="base">
-      <lightning-button variant="brand" label="Toast Notification" onclick={handleClick}></lightning-button>
+    <lightning-card icon-name="standard:account" variant="base" title="Toast Notification">
+      <lightning-button variant="brand" label="Success - Toast Notification" onclick={SuccesshandleClick}></lightning-button> <br><br>
+
+      <lightning-button variant="brand" label="Worning - Toast Notification" onclick={WarninghandleClick}></lightning-button> <br><br>
+
+
+      <lightning-button variant="brand" label="Error - Toast Notification" onclick={errorhandleClick}></lightning-button>
+
+
     </lightning-card>
     
 </template>

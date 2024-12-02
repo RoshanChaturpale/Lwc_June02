@@ -1,4 +1,4 @@
-import { LightningElement, api, wire } from 'lwc';
+import { LightningElement, api, wire ,track} from 'lwc';
 import getAccountData from '@salesforce/apex/apexClass_practice_LWC.getAccountData';
 import { updateRecord } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
@@ -8,8 +8,10 @@ import { refreshApex } from '@salesforce/apex';
 export default class ChildComponentShowData extends LightningElement {
 
     holdParentData; // Reactive property for parent data
-    accountData;           // Holds fetched account data
+    @api accountData;           // Holds fetched account data
     error;                 // Holds error if any
+    fldsItemValues = [];
+
 
     // Columns for the lightning-datatable
     columns = [

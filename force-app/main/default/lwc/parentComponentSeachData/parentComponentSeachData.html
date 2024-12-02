@@ -2,6 +2,10 @@
 
     <lightning-card title="Search Account data - Parent Component"> 
 
+        
+            <lightning-button label="Create New Account Record"  onclick={NavigateCreateNewAccountRecord} slot="actions"></lightning-button>
+    
+
          <!-- Default/basic -->
          <div class="slds-p-around_medium lgc-bg">
             <lightning-input type="text" value={fname} label="Search Acccount Data" onchange={onChangeEventHandler}></lightning-input>
