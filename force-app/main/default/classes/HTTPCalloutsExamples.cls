@@ -6,7 +6,7 @@ public class HTTPCalloutsExamples {
         Http htp = new Http();
         
         HttpRequest req = new HttpRequest();
-        req.setEndPoint('https://jsonplaceholder.typicode.com/posts');
+        req.setEndPoint('https://dummy.restapiexample.com/api/v1/employees');
         req.setMethod('GET');
         
         HttpResponse res = htp.send(req);

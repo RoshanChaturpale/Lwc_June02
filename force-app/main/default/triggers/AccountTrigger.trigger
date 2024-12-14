@@ -10,7 +10,7 @@ trigger AccountTrigger on Account (before insert,Before update, Before delete,  
      //
      //AccountTriggerHandler.method1(Trigger.new);
      
-     //AccountTriggerHandler.mergeDuplicateAccounts(trigger.new);
+     AccountTriggerHandler.mergeDuplicateAccounts(trigger.new);
        
     
           }
@@ -36,7 +36,7 @@ trigger AccountTrigger on Account (before insert,Before update, Before delete,  
       //AccountTriggerHandler.updateRelatedContactDescription(trigger.New, trigger.oldMap); 
       // AccountTriggerHandler.updateRelatedContactsWithMap(trigger.new, trigger.oldMap);
       // 
-         //  AccountTriggerHandler.mergeDuplicateAccounts(trigger.new);
+         AccountTriggerHandler.mergeDuplicateAccounts(trigger.new);
 
     }
     

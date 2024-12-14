@@ -1,4 +1,4 @@
-public class accountData {
+public with Sharing class accountData {
     
      @AuraEnabled(Cacheable=true)
     Public static List<Account> accData(){
@@ -54,6 +54,12 @@ public class accountData {
     public static List<Account> comboBoxDemo_getAccount(){
         list<Account> accountList =[select id, Name from Account];
         return accountList;
+}
+    
+        @AuraEnabled
+    public static List<Contact> comboBoxDemo_getContactRecords(String accId){
+        list<Contact> conactList =[select id, Name, AccountId from Contact where AccountId =: accId];
+        return conactList;
 }
         
     }

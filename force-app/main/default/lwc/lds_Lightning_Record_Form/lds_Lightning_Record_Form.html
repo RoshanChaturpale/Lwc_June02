@@ -1,0 +1,60 @@
+<template>
+
+<!-- ===================Record Form - ReadOnly Mode==============================. -->
+
+    <lightning-card title="Record Form - ReadOnly Mode">
+
+        <lightning-record-form object-api-name={cricket_Object}
+                                fields={fields}
+                                record-id={recordId}
+                                mode="readonly"
+                                columns="2"
+                                >
+        </lightning-record-form>
+    </lightning-card>
+
+<!-- =================Record Form - View Mode===================================> -->
+    
+<!-- <lightning-card title="Record Form - View Mode">
+
+        <lightning-record-form object-api-name={cricket_Object}
+                                fields={fields}
+                                record-id={recordId}
+                                mode="view"
+                                columns="2"
+                                onsubmit={onSubmitHandller}
+                                >
+        </lightning-record-form>
+    </lightning-card> -->
+
+
+
+<!-- ================Record Form - Edit Mode===================================== -->
+    
+    <!-- <lightning-card title="Record Form - Edit Mode">
+
+        <lightning-record-form object-api-name={cricket_Object}
+                                fields={fields}
+                                record-id={recordId}
+                                mode="edit"
+                                columns="2"
+                                onsubmit={onSubmitHandller}
+                                >
+        </lightning-record-form>
+    </lightning-card> -->
+
+
+
+
+<!-- ....................Record Form - Default Mode.......................-->
+
+    <!-- <lightning-card title="Record Form - Default Mode">
+
+        <lightning-record-form object-api-name={cricket_Object}
+                                columns="2"
+                                layout-type="Full">
+
+        </lightning-record-form>
+    </lightning-card> -->
+    
+</template>

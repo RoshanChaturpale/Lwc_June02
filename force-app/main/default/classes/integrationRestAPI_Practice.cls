@@ -1,8 +1,69 @@
-@RestResource(urlMapping='/createAccountRecord')
+@RestResource(urlMapping='/AccountRecord')
 Global class integrationRestAPI_Practice {
     
     
-    //data support bulkification with custome post api
+    @HttpGet
+    Global Static accountContactCaseData_Get getAccountData(){
+        
+        map<string, string> param = RestContext.Request.params;
+        
+        //string par = param.get('industry');
+        //List<String> industries = par.split(',');   //multiple values
+
+        String accountId = param.get('accountId');
+        
+        set<id> setids = new set<id>();
+        List<Account> accountlist = [select id, Name, Phone, Industry from Account where id   =: accountId];
+        
+        For(Account acc : accountlist){
+            setids.add(acc.id);
+        }
+        
+        List<Contact> contactlist = [select id, AccountId , FirstName, LastName from Contact where AccountId =: setids];
+        List<Case> getcaselist = [select id , Subject from Case where AccountId =: setids];
+        
+        accountContactCaseData_Get getWrapper  = new accountContactCaseData_Get();
+        getWrapper.acclist = accountlist;
+        getWrapper.conlist = contactlist;
+        getWrapper.caselist = getcaseList;
+      
+        return getWrapper;
+    }
+    
+   /* @httpPost
+    Global static String createAccount(string accname ,string accrating){
+            
+        Account acc = new Account();
+        acc.Name = accname;
+        acc.Rating = accrating;
+        
+        insert acc;
+        return 'account data created successfully';
+    }*/
+    
+    @httpPost
+    Global static string createAccountContactData(accountInformation information){
+ 
+        Account accrecord = information.accountRecords;
+        Contact conrecord = information.contactRecords;
+        
+        try{
+            insert accrecord;
+            conrecord.AccountId = accrecord.Id;
+            insert conrecord;
+            return 'account and contact is created successfully...';
+                }catch(exception e){
+                    
+                    return e.getMessage();     
+                }     
+    }
+    
+   
+    
+    
+    
+   
+    /*data support bulkification with custome post api
      @HttpPost
     global static void sendAccountRecordWithBulkification(){
         
@@ -48,6 +109,7 @@ response.statusCode = 200;
         }
     
     }
+*/
 
     //single data support
    /* @HttpPost
@@ -71,11 +133,31 @@ response.statusCode = 200;
     
     }*/
     
+    
+    
+    Global class accountInformation{
+        
+        global Account accountRecords{get;set;}
+            global Contact contactRecords{get;set;}
+   
+    }  
+    
+    
     global Class accountWrapper{
         
         public String name;
         public String rating;
         public String type;
+    }
+    
+    
+    
+    
+    global class accountContactCaseData_Get{
+        
+        list<Account> acclist;
+        list<Contact> conlist;
+        list<Case> caselist;
     }
     
     
