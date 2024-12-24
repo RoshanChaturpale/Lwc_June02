@@ -1,12 +1,17 @@
 <template>
 
+    <lightning-card  title='ParentComp' icon-name="standard:account">
 
-    <lightning-card title="parentComp">
-
-        <h1>Counter is === {counter}</h1>
-
-        <c-child-lwc onsubtraction={sub} onaddition={addd} onmulvalue={mulnumber}></c-child-lwc>
-
+        <p>Count is ===> {countValue}</p>
+        
     </lightning-card>
-    
+
+
+   <c-child-l-w-c onforincrement={incrementwithNumber} 
+                  onfordecrement={decrementwithNumber}>
+
+   </c-child-l-w-c>
+
+   
+
 </template>

@@ -1,0 +1,22 @@
+<template>
+
+    <lightning-card  variant="Narrow"  title="Parentlwc1" icon-name="standard:account">
+       
+       <lightning-input type="number"
+                        label="Set Counter" min="0" max="10000" 
+                        placeholder="type here..."
+                        value={startcounter}
+                        onchange={onChangeStartCounter}>
+
+
+       </lightning-input>
+
+
+
+    </lightning-card>
+
+
+   <c-childlwc1 valueis={startcounter}></c-childlwc1>
+
+
+</template>

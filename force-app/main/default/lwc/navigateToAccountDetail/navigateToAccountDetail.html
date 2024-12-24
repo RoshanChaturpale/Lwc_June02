@@ -1,0 +1,19 @@
+<template>
+ <lightning-card title="Account Record Form">
+  <div class="slds-m-around_medium">
+  <lightning-card title="Data Binding">
+    <lightning-record-form
+        object-api-name={objectApiName}
+        layout-type="Full"
+        record-id={rId}
+        onsuccess={updatehandler}
+        mode="readonly"
+    >
+    </lightning-record-form>
+
+</lightning-card>
+  </div>
+  </lightning-card>
+
+   <!-- fields={fieldslist}-->
+</template>
