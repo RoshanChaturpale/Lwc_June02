@@ -1,0 +1,128 @@
+<apex:page renderAs="pdf">
+    
+   
+<div align="center">
+    <div style="margin-top:0cm;margin-right:0cm;margin-bottom:0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:'Calibri',sans-serif;">
+        <table style="width:100%;border-collapse:collapse;border: 1px solid black; text-align: left;">
+            <tbody>
+                <tr style="border: 1px solid black;">
+                    <td colspan="2" style="padding: 0cm;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:20px;font-family:'Calibri',sans-serif;text-align:center;">
+                            <strong>COST OF BORROWING NOTICE</strong>
+                        </p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td colspan="2" style="padding: 0cm;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:15px;font-family:'Calibri',sans-serif;text-align:center;">
+                            Payday loans are a form of high-cost credit
+                        </p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td colspan="2" style="padding: 0cm;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;text-align:center;"><br/></p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td style="width: 45.74%;padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;">Amount of loan</p>
+                    </td>
+                    <td style="width: 54.26%;padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;">$ <!--- <apex:outputField value="{!${opp.Principal_Loan_Amount__c}}"/> --> </p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td style="padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;">Total Fees and Interest</p>
+                    </td>
+                    <td style="padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;"><!--- <apex:outputField value="{!${opp.Cost_of_Borrowing__c}}"/> --> Days</p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td style="padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;">Rate per $100 borrowed <br/>(legal maximum of $15)</p>
+                    </td>
+                    <td style="padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;">$ <!--- <apex:outputField value="{${opp.Admin_Fee_per_100__c}}"/> --> </p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td colspan="2" style="padding: 0cm;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;text-align:center;"><br/></p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td style="padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;">Annual Percentage Rate</p>
+                    </td>
+                    <td style="padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;"><!--- <apex:outputField value="{!opp.Payday_APR__c}"/> --> </p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td colspan="2" style="padding: 0cm;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;text-align:center;"><br/></p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td style="padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;">Total Amount to be paid</p>
+                    </td>
+                    <td style="padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;"><!--- <apex:outputField value="{!{${opp.Total_Cost_of_Borrowing__c}}"/> --> </p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td colspan="2" style="padding: 0cm;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;text-align:center;"><br/></p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td style="padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;">Payment Schedule</p>
+                    </td>
+                    <td style="padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;">$ <!--- {!${opp.Payment_Amount_1__c}}</span><span style="font-size:12px;">&nbsp;{!opp.Due_Date_1__c} <br/> {!${opp.Payment_Amount_2__c}}</span><span style="font-size:12px;">&nbsp;{!opp.Due_Date_2__c} <br/> {!${opp.Payment_Amount_3__c}}</span><span style="font-size:12px;">&nbsp;{!opp.Due_Date_3__c} --></p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td colspan="2" style="padding: 0cm;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;text-align:center;"><br/></p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td style="padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;">Dishonoured Payment Fee</p>
+                    </td>
+                    <td style="padding: 2px;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:12px;font-family:'Calibri',sans-serif;">$ <!--- {!${opp.Lead_Referred_To__r.NSF_Fee__c}} --> </p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td colspan="2" style="padding: 0cm;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:15px;font-family:'Calibri',sans-serif;">You can prepay this loan in full or in part at any time without any charge
+
+ or penalty</p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td colspan="2" style="padding: 0cm;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:15px;font-family:'Calibri',sans-serif;text-align:center;">
+                            Make sure your loan fits your budget. Borrow only the amount you can afford to repay on time
+                        </p>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td colspan="2" style="padding: 0cm;vertical-align: top;border: 1px solid black;">
+                        <p style="margin: 0cm;line-height:normal;font-size:15px;font-family:'Calibri',sans-serif;text-align:center;">
+                            For information on the cost of payday loans, contact the licencing authority in your province or territory
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</apex:page>

@@ -1,10 +1,18 @@
 @RestResource(urlMapping='/CompanyData')
 Global class restApiIntergration {
     
-    @HttpGet
+    
     Global static List<Account> getAccountRecord(){
         
-        List<Account> acclist = [select id, Name, Rating from Account  limit 10];
+            //RestRequest req = RestContext.request;
+   // RestResponse res = RestContext.response;
+        
+        List<Account> acclist = [select id, Name, Rating from Account];
+        
+        string jsonBody = JSON.serialize(acclist);
+        
+      system.debug('jsonBody============>' +jsonBody.toString());
+
         
        return acclist;
         
@@ -49,11 +57,23 @@ global static void createAccount() {
             wrapperBody wrp = wrappers[i];
             Account insertedAccount = accountList[i]; // Get the corresponding inserted Account
 
+            
             Contact con = new Contact();
             con.FirstName = wrp.contactFirstName;
             con.LastName = wrp.contactLastName;
             con.AccountId = insertedAccount.Id; // Link the Contact to the Account
             contactList.add(con);
+            
+            /*
+            // Create Contact objects for each contact associated with the Account
+                for (ContactDetails contact : wrp.contacts) {
+                    Contact con = new Contact();
+                    con.FirstName = contact.firstName;
+                    con.LastName = contact.lastName;
+                    con.AccountId = insertedAccount.Id; // Link the Contact to the Account
+                    contactList.add(con);
+                }
+            */
         }
 
         // Insert contacts in bulk
@@ -71,6 +91,65 @@ global static void createAccount() {
         res.responseBody = Blob.valueOf('An error occurred: ' + ex.getMessage());
     }
 }
+    
+    
+public static void createWrapperBody(){
+        
+        
+        List<Account> acccountList = [select id, Name,(select id, FirstName, LastName, Email from Contacts) from Account];
+        
+        system.debug('acccountList' +acccountList);
+        
+        List<wrappData> wraperlist = new List<wrappData>();
+        
+        For(Account acc : acccountList){
+            wrappData wr = new wrappData();
+            wr.accountName = acc.Name;
+            
+            List<contactData>  contactlist = new List<contactData>();
+            
+            For(Contact con : acc.Contacts){
+                contactData cd = new contactData();
+                cd.firstname = con.FirstName;
+                cd.lastname = con.LastName;
+                cd.email = con.Email;
+                contactlist.add(cd);
+                
+            }
+            
+            wr.contacts = contactlist;
+            
+            wraperlist.add(wr);
+        }
+        
+        string JsonBody = JSON.serialize(wraperlist);
+        
+        system.debug('JsonBody ===> ' +JsonBody);
+        
+        
+        
+        
+        
+    }
+    
+    public class wrappData{
+        
+        public string accountName;
+        public List<contactData> contacts;
+        
+    }
+    
+    Public class contactData{
+        
+      public  string firstName;
+        public string lastName;
+        public string email;
+        
+    }
+    
+    
+
+
 
     
 

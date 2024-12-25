@@ -12,6 +12,8 @@ public class apexPage_Validataion {
     
     Public  void createLead(){
         
+        system.debug('im in createLead method');
+        
         leads = new Lead();
         leads.FirstName = firstname;
         leads.LastName = firstname;
@@ -21,8 +23,10 @@ public class apexPage_Validataion {
         
         
         System.debug('Lead : '+leads);
-        //ApexPages.AddMessage(new ApexPages.Message(ApexPages.Severity.Confirm, 'operation performed Successfully.'));
+        
         insert leads;
+                ApexPages.AddMessage(new ApexPages.Message(ApexPages.Severity.Confirm, 'operation performed Successfully.'));
+
          
         ResetObjects();
     }

@@ -1,0 +1,42 @@
+<apex:page controller="visualforcePage_for_practice" standardStyleSheets="false" docType="html-5.0">
+    
+    <apex:form >
+        
+        <apex:actionFunction name="CallApexMethod" action="{!create_Records}"/>
+        
+                        <!--Submit Button------>
+                        <div class="d-grid gap-2">
+                            <apex:commandButton style="color: #fff;font-weight:600;background: #0a2463;padding: 8px 20px 9px 20px;"  onclick="validateForm();"  value="Submit" id="theeButton"/>
+                        </div>
+    
+    </apex:form>
+    
+    
+    <script>
+    
+    
+     function validateForm(){
+                                                        
+       var isError = false;
+       
+                                  
+       //Calling Apex Method                                            
+       if (isError) 
+        {
+            console.log('Validation errors occurred.');
+        }    
+        else {
+            console.log('im in CallApexMethod');
+            CallApexMethod(); 
+            
+         
+        }    
+ }
+    
+    
+    
+    </script>
+    
+    
+    
+</apex:page>

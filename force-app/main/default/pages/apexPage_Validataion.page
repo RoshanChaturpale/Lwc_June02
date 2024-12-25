@@ -151,7 +151,7 @@
                                                      
        var isError = false;
        
-       
+       // Fields Validation
        if(!isError){
            
            //Name Field
@@ -207,12 +207,15 @@
                 conditionError.innerHTML="";
             }
        }
+                                                     
+       //Calling Apex Method                                            
        if (isError) 
         {
             console.log('Validation errors occurred.');
         }    
         else {
-            CallApexMethod();  
+            CallApexMethod(); 
+         
         }    
  }
     
