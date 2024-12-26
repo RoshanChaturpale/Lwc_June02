@@ -4,9 +4,21 @@
         
         <lightning-tabset>
 
-            <lightning-tab label="First Tab">
-               <c-parent-component-seach-data></c-parent-component-seach-data>
-             </lightning-tab>
+          <lightning-tab label="Search Account Data">
+            <lightning-tabset>
+
+              <lightning-tab label="Search Account">
+                <c-parent-component-seach-data></c-parent-component-seach-data>
+               </lightning-tab>
+
+               <!-- <lightning-tab label="Search Account">
+                <c-lwc_ComboBox_with_Imperative_Method></c-lwc_ComboBox_with_Imperative_Method>
+               </lightning-tab> -->
+            
+            
+              </lightning-tabset>
+
+         </lightning-tab>
 
 
 
@@ -16,10 +28,27 @@
 
 
 
-            <lightning-tab label="Third Tab">
-
-            Roshan C : Salesforce
+            <lightning-tab label="Search Movies">
+              <c-movies></c-movies>
             </lightning-tab>
+
+
+
+            <lightning-tab label="Navigation Service">
+              <c-navigation-lwc-demo></c-navigation-lwc-demo>
+            </lightning-tab>
+
+
+
+            <lightning-tab label="Toast Notification">
+               <c-practice_toast_notification></c-practice_toast_notification>
+            </lightning-tab>
+
+
+
+            <!-- <lightning-tab label="Account|Contact Data">
+              <c-lwc_ComboBox_with_Imperative_Method_with_Child_Records></c-lwc_ComboBox_with_Imperative_Method_with_Child_Records>
+           </lightning-tab> -->
 
 
         </lightning-tabset>

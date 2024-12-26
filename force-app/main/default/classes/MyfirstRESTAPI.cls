@@ -1,20 +1,29 @@
-public class MyfirstRESTAPI {
+@RestResource(urlMapping='/myapi')
+Global with sharing class MyfirstRESTAPI {
     
-    @future(callout=true)
-    Public static void method1(){
+    @HttpGet
+    Global static String featchAccount(){
         
-        http htp = new http();
+        restRequest request = restContext.request;
+        restResponse response = restContext.response;
         
-        httpRequest  request = new httpRequest();
-        request.setEndpoint('callout:Saleforce_target/services/apexrest/myapi/');
-        request.setMethod('GET');
+        Map<string,Object> mapparam = request.params; //is property it give us Map
+       
+       
+       
+       system.debug('mapparam' +mapparam);
+        //url Parameters
+        //urI
+        //Body
+        //Headers
         
-        httpResponse response = htp.send(request);
-        
-        system.debug('response' +response.getBody());
         
         
+        List<Account> accountList = [select id, Name from Account];
         
+        string jsonString  = JSON.Serialize(accountList);
+        
+        return jsonString;
     }
 
 }

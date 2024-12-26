@@ -1,16 +1,30 @@
 import { LightningElement } from 'lwc';
-export default class ParentLWC extends LightningElement {
 
-    countValue = 0;
+export default class ParentLwc extends LightningElement {
 
-    incrementwithNumber(){
-       // console.log('i am in incrementwithNumber method');
-        this.countValue++;
+
+    counter = 0;
+
+    sub(){
+
+        this.counter--;
+
     }
 
+    addd(){
 
-    decrementwithNumber(){
-        this.countValue--;
+        console.log('addd');
+
+        this.counter++;
+
+
     }
 
+    mulnumber(event){
+const multnumber = event.detail;
+
+this.counter = this.counter * multnumber;
+  
+
+    }
 }

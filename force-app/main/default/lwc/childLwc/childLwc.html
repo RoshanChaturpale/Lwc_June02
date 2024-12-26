@@ -1,16 +1,20 @@
 <template>
 
-    <lightning-card  title="childComp" icon-name="standard:account">
+    <lightning-card title="childCom">
+      
+        <lightning-button label=" - Subtraction" title="Non-primary action" onclick={subtract} class="slds-m-left_x-small"></lightning-button>
 
-        <lightning-button  label="ADD"  onclick={addHandleClick}>
-        </lightning-button>
+
+        <lightning-button label=" + Add" title="Non-primary action" onclick={add} class="slds-m-left_x-small"></lightning-button>
+
+        <lightning-button label=" *2 Mul" value="2" title="Non-primary action" onclick={mult} class="slds-m-left_x-small"></lightning-button>
+
+        <lightning-button label=" *10 Mul" value="10" title="Non-primary action" onclick={mult} class="slds-m-left_x-small"></lightning-button>
 
 
-        </br>
 
-        <lightning-button label="SUB"  onclick={subHandleClick}>
-        </lightning-button>
-       
+
+        
     </lightning-card>
-
+    
 </template>

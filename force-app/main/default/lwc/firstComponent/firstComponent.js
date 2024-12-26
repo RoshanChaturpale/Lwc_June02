@@ -1,9 +1,3 @@
-import { LightningElement , api} from 'lwc';
-export default class FirstComponent extends LightningElement {
+import { LightningElement } from 'lwc';
 
-
-    messege = 'Public Property';
-    @api recordId;
-
-    Name = 'Roshan';
-}
+export default class FirstComponent extends LightningElement {}

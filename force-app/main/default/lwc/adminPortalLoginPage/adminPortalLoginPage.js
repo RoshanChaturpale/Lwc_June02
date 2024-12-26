@@ -1,9 +1,10 @@
 import { LightningElement } from 'lwc';
-import doLogin from '@salesforce/apex/CommunityAuthController.doLogin';
+import doLogin from '@salesforce/apex/AdminPortalCommunityAuthController.doLogin';
 
 export default class AdminPortalLoginPage extends LightningElement {
 
- username;
+
+    username;
     password;
     errorCheck;
     errorMessage;
@@ -47,4 +48,5 @@ export default class AdminPortalLoginPage extends LightningElement {
         }
 
     }
+
 }

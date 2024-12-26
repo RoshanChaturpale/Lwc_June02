@@ -1,21 +1,30 @@
 import { LightningElement } from 'lwc';
-export default class ChildLWC extends LightningElement {
 
-    addHandleClick(){
+export default class ChildLwc extends LightningElement {
 
+    subtract(){
 
-                this.dispatchEvent(new CustomEvent('forincrement'));
+        this.dispatchEvent(new CustomEvent('subtraction'));
+
+    }
+
+    add(){
+
+        this.dispatchEvent(new CustomEvent('addition'));
+
 
     }
 
 
-    
+    mult(event){
 
+       const multuplyNumber = event.target.value();
+        alert('multuplyNumber' , multuplyNumber);
 
-    subHandleClick(){
-
-        this.dispatchEvent(new CustomEvent('fordecrement'));
+        this.dispatchEvent(new CustomEvent('mulvalue',{detail:multuplyNumber}))
 
     }
 
+
+   
 }

@@ -6,6 +6,11 @@
     <description>Default experiences self registration confirmation page</description>
     <label>CommunitiesSelfRegConfirm</label>
     <packageVersions>
+        <majorNumber>250</majorNumber>
+        <minorNumber>0</minorNumber>
+        <namespace>et4ae5</namespace>
+    </packageVersions>
+    <packageVersions>
         <majorNumber>1</majorNumber>
         <minorNumber>7</minorNumber>
         <namespace>sf_com_apps</namespace>
