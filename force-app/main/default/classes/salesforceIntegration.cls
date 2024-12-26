@@ -9,6 +9,7 @@ public class salesforceIntegration {
         string grantType = 'password';
         string clientId = '';
         string clientSecretKey = '';
+        string andccc = '';
         
         http htp = new http();
         
