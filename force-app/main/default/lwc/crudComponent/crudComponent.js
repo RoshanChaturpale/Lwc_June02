@@ -34,6 +34,7 @@ export default class CrudComponent extends LightningElement {
     @track showInputFieldFlag = false;
     @track showSaveButtonFlag = false; 
     @track showSearchNowButtonFlag = false;
+    @track sjs = false;
 
     nameHandler(event){
         this.accountObj.Name = event.target.value;

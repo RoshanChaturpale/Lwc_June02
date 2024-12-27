@@ -11,27 +11,28 @@
         <lightning-record-edit-form object-api-name="Account">
             <lightning-input-field field-name="Name" value={accountObj.Name} onchange={nameHandler}></lightning-input-field>
 
-            <template if:true={showInputFieldFlag}>
+            <template lwc:if={showInputFieldFlag}>
                 <lightning-input-field field-name="Rating" value={accountObj.Rating} onchange={ratingHandller}></lightning-input-field>
             </template>
         </lightning-record-edit-form>
 
-        <template if:true={showSaveButtonFlag}>
+        <template lwc:if={showSaveButtonFlag}>
             <lightning-button variant="brand" label="Save" icon-name="utility:save" onclick={saveButtonHandler}></lightning-button> &nbsp; &nbsp; &nbsp; &nbsp;
         </template>
 
-        <template if:true={showSearchNowButtonFlag}>
+        <template lwc:if={showSearchNowButtonFlag}>
             <lightning-button variant="brand" label="Search Account Data" icon-name="utility:search" onclick={searcNowButtonHandler}></lightning-button> &nbsp; &nbsp; &nbsp; &nbsp;
         </template>
 
 
-<template if:true={Data}>
+<template lwc:if={Data}>
     <lightning-datatable key-field="id"
                 data={Data}
                 columns={columns}>
         </lightning-datatable>
 
 </template>
+
         
 
 

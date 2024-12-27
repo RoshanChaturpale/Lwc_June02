@@ -1,0 +1,22 @@
+<template>
+    <lightning-card>
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Verifying phone..."></lightning-spinner>
+        </template>
+        <template if:false={isLoading}>
+            <lightning-button
+                label="Verify Phone"
+                variant="brand"
+                onclick={handleVerifyPhone}
+                class="slds-m-bottom_medium">
+            </lightning-button>
+
+            <template if:true={message}>
+                <p class="slds-text-color_success">{message}</p>
+            </template>
+            <template if:true={error}>
+                <p class="slds-text-color_error">{error}</p>
+            </template>
+        </template>
+    </lightning-card>
+</template>
