@@ -1,0 +1,8 @@
+<template>
+    <lightning-card title="Send Agreement">
+        <lightning-button label="Generate  Send Agreement" onclick={handleGenerateSend} class="slds-m-top_medium"></lightning-button>
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Processing..."></lightning-spinner>
+        </template>
+    </lightning-card>
+</template>
