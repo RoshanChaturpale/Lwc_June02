@@ -1,13 +1,16 @@
 public class VerifyPhoneNumberApi {
 
     Public static phoneNumberWrapper invokePhoneAPI(String mobNumber){
+        
+        // Retrieve the API key from the custom label
+        String apiKey = Label.API_Key;
     
-        string Apikey = '1524C9C067E840F0B3A80B0D684C4778';
+       // string Apikey = '';   Hard Codded
         
         Http htp = new Http();
         
         HttpRequest request = new HttpRequest();
-        request.setEndPoint('https://api.veriphone.io/v2/verify?phone='+mobNumber+'&key='+Apikey);
+        request.setEndPoint('https://api.veriphone.io/v2/verify?phone='+mobNumber+'&key='+apiKey);
         request.setMethod('GET');
         request.setTimeOut(60000);
         
