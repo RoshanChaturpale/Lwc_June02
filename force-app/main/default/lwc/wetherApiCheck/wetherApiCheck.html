@@ -1,0 +1,17 @@
+<template>
+
+    <lightning-card title="Check Wether Status">
+
+        <lightning-input type="text" label="Enter some text" value={Name} onchange={searchWetherReport}></lightning-input>
+
+        <lightning-button label="Search Conditon"  onclick={ONClickHnadller}></lightning-button>
+
+
+        <template if:true={weatherIcon}>
+            <img src={weatherIcon} alt="not found">
+            <strong>{weatherText}</strong>
+        </template>
+      
+    </lightning-card>
+    
+</template>
