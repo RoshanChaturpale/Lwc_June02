@@ -1,0 +1,17 @@
+<template>
+
+    <lightning-card title="Parent-Component">
+
+       
+        <!-- Default/basic -->
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="text" label="Enter some text" value={inputvalue} onchange={handleChange}></lightning-input>
+        </div>
+
+        <c-p2c-child-component 
+        titlecard="Child C"     inputtext={inputvalue}></c-p2c-child-component>
+
+        
+    </lightning-card>
+    
+</template>
