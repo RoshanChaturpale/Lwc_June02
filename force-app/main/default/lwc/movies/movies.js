@@ -14,7 +14,7 @@ export default class MoviesList extends LightningElement {
             this.movies = data.success ? data.result : [];
         }
         else if (result.error) {
-            console.log('Error occured while searching movies -' + result.error);
+            //console.log('Error occured while searching movies -' + result.error);
         }
         this.selectedMovieId = '';
         this.isLoading = false;

@@ -19,7 +19,7 @@ export default class Lwc_ComboBox_with_Imperative_Method extends LightningElemen
                 arr.push({label : result[i].Name , value : result[i].Id})
             }
             this.accOption = arr;
-            console.log('this.accOption ' +JSON.stringify(this.accOption ));
+           // console.log('this.accOption ' +JSON.stringify(this.accOption ));
         })
         .catch(error => {
             console.log('error is found');
