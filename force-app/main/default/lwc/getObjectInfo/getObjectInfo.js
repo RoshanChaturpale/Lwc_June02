@@ -4,11 +4,17 @@ import ACCOUNT_OBJECT from '@salesforce/schema/Account';
 
 export default class GetObjectInfo extends LightningElement {
 
+  defaultRecTypeId;
+  ObjApiName
 
-    @wire(getObjectInfo , {objectApiName: ACCOUNT_OBJECT})
-    getData(data){
-        if(data){
-            console.log('this is my data -==' ,data);
-        }
+    @wire(getObjectInfo, {objectApiName: ACCOUNT_OBJECT})
+    objFucntion({data, error}){
+      if(data){
+       // console.log('getObjectInfo Data is === ', data);
+
+        this.defaultRecTypeId = data.defaultRecordTypeId;
+        this.ObjApiName = data.apiName;
+
+      }
     }
 }
