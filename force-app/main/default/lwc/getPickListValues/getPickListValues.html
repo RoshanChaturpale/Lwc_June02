@@ -2,7 +2,19 @@
 
     <lightning-card title="getPickListValues">
 
-        <h1>vbnmkbnmk</h1>
+        <div class="slds-p-around_small">
+            <lightning-combobox
+                    name="progress"
+                    label="Industry"
+                    value={selectedIndustry}
+                    placeholder="Select Industry"
+                    options={IndustryOptions}
+                    onchange={handleChange} ></lightning-combobox>
+
+                </div>
+        
+            <p>Selected value is: {selectedIndustry}</p>
+        
     
     </lightning-card>
     
