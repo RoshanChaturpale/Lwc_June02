@@ -33,7 +33,7 @@ export default class CarFilter extends LightningElement {
  handleSearchKeyChange(event){
 
    this.filter.searchKey =event.target.value;
-   console.log('handleSearchKeyChange is=== ' , this.filter.searchKey);
+   //console.log('handleSearchKeyChange is=== ' , this.filter.searchKey);
 
 
     }
@@ -41,7 +41,7 @@ export default class CarFilter extends LightningElement {
     handleMaxPriceChange(event){
 
         this.filter.maxPrice = event.target.value;
-        console.log('handleSearchKeyChange is=== ' ,this.filter.maxPrice);
+        //console.log('handleSearchKeyChange is=== ' ,this.filter.maxPrice);
 
 
 
@@ -53,8 +53,8 @@ export default class CarFilter extends LightningElement {
     handleCheckbox(event){
 
         const {name, value} = event.target.dataset;
-        console.log('name', name);
-        console.log('value', value);
+        //console.log('name', name);
+        //console.log('value', value);
 
 
     }
