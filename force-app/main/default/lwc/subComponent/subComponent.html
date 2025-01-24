@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="LMS Component B">
+        <div class="slds-p-horizontal_small">
+            Message Received form Copm A : &nbsp; <strong>{messageReceived}</strong>
+        </div>
+
+        <br>
+
+        <div class="slds-p-horizontal_small">
+            <lightning-button variant="brand" label="Subscribe" onclick={subscribeHandler}></lightning-button>
+            
+            &nbsp; &nbsp; &nbsp; &nbsp;
+
+            <lightning-button variant="brand" label="Un-Subscribe" onclick={unSubscribeHandler}></lightning-button>
+             
+        </div>
+    </lightning-card>
+</template>

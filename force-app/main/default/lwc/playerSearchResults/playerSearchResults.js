@@ -13,23 +13,23 @@ export default class PlayerSearchResults extends LightningElement {
     wiredCricketers({error,data}){
 
         if(error){
-            console.log('error:' +JSON.stringify(error));
+           // console.log('error:' +JSON.stringify(error));
         }else if(data){
             this.cricketersData = data;
-            console.log('this.cricketersData:' +JSON.stringify(this.cricketersData));
+            //console.log('this.cricketersData:' +JSON.stringify(this.cricketersData));
         }
     }
 
     //target id
     handleClickPlayerCard(event) {
-        console.log('handleClickPlayerCard');
+       // console.log('handleClickPlayerCard');
     
         // Ensure dataset and id are available
         if (event.currentTarget && event.currentTarget.dataset) {
             this.selectedPlayerId = event.currentTarget.dataset.id;
           //  this.selectedPlayerName = event.currentTarget.dataset.Name;
 
-            console.log('this.selectedPlayerId: ' + JSON.stringify(this.selectedPlayerId));
+            //console.log('this.selectedPlayerId: ' + JSON.stringify(this.selectedPlayerId));
            // console.log('Selected Player Name: ' + JSON.stringify(this.selectedPlayerName));
         }
 
@@ -48,11 +48,7 @@ export default class PlayerSearchResults extends LightningElement {
 
 
         //custom event (send child to parent) -data
-        this.dispatchEvent(new CustomEvent('select' ,{
-            detail:{
-                playerId : this.selectedPlayerId
-            }
-        }))
+        this.dispatchEvent(new CustomEvent('select' ,{detail:{playerId : this.selectedPlayerId}}))
 
 
 
@@ -66,7 +62,7 @@ export default class PlayerSearchResults extends LightningElement {
 
         @api searchCricketers(NationalityOfCricketer){
 
-            console.log('value in Child LWC' + JSON.stringify(NationalityOfCricketer));
+          //  console.log('value in Child LWC' + JSON.stringify(NationalityOfCricketer));
 
             this.cricketerNationality =  NationalityOfCricketer;
 

@@ -18,7 +18,7 @@ export default class PlayerSearchFilter extends NavigationMixin(LightningElement
     ObjectInfos({data, error}){  
 
         if(error){
-            console.log('error:' +JSON.stringify(error));
+            //console.log('error:' +JSON.stringify(error));
         }else if(data){
 
           //this.recordTypeId = data;
@@ -26,7 +26,7 @@ export default class PlayerSearchFilter extends NavigationMixin(LightningElement
 
           //we add defaultRecordTypeId(record detail page id)
             this.recordTypeId = data.defaultRecordTypeId;
-             console.log('this.recordTypeId'  + this.recordTypeId);
+            // console.log('this.recordTypeId'  + this.recordTypeId);
            // console.log('this.recordTypeId' +JSON.stringify(this.recordTypeId));
 
         }
@@ -38,7 +38,7 @@ export default class PlayerSearchFilter extends NavigationMixin(LightningElement
     nationalityFieldValues({data, error}){
 
         if(error){
-            console.log('error :' +JSON.stringify(error));
+            //console.log('error :' +JSON.stringify(error));
 
         }else if(data){
             let arr = [];
@@ -50,7 +50,7 @@ export default class PlayerSearchFilter extends NavigationMixin(LightningElement
 
             //data values
             this.picklistValues = data.values;
-            console.log('this.picklistValues :' +JSON.stringify(this.picklistValues));
+            //console.log('this.picklistValues :' +JSON.stringify(this.picklistValues));
 
            //foreach loop
             this.picklistValues.forEach( element =>{
@@ -59,7 +59,7 @@ export default class PlayerSearchFilter extends NavigationMixin(LightningElement
 
             //store array value 
             this.optionsArray = arr;
-            console.log('this.optionsArray' + JSON.stringify(this.optionsArray));
+           // console.log('this.optionsArray' + JSON.stringify(this.optionsArray));
 
         }
     }
@@ -82,7 +82,7 @@ export default class PlayerSearchFilter extends NavigationMixin(LightningElement
     handleOptionChanged(event){
 
         this.selectedCricketerNationality = event.detail.value;
-        console.log('this.selectedCricketerNationality' + JSON.stringify(this.selectedCricketerNationality));
+        //console.log('this.selectedCricketerNationality' + JSON.stringify(this.selectedCricketerNationality));
 
 
         //callchild Componet js method called searchCricketers
@@ -91,10 +91,10 @@ export default class PlayerSearchFilter extends NavigationMixin(LightningElement
 
     handleCustomEvent(event){
 
-        console.log('handleCustomEvent');
+        //console.log('handleCustomEvent');
 
         this.selectCrickerPlayerId = event.detail.PlayerId;
-        console.log(' this.selectCrickerPlayerId : ' +JSON.stringify( this.selectCrickerPlayerId));
+        //console.log(' this.selectCrickerPlayerId : ' +JSON.stringify( this.selectCrickerPlayerId));
 
     }
 }
