@@ -1,0 +1,14 @@
+<template>
+
+    <lightning-card title="Search Account Record with LMS">
+
+        <div class="slds-p-around_medium">
+
+            <lightning-input type="Text" label="Search Account Record" value={searchKey}  onchange={onChangeHandler}></lightning-input><br>
+
+                <!--Search Button-->
+                <lightning-button label="Search" variant="brand" onclick={SearchAccountHandler}></lightning-button>
+        </div>
+    </lightning-card>
+    
+</template>
