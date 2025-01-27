@@ -3,27 +3,39 @@
     <lightning-card title={carName} icon-name="standard:calibration">
 
 
+        <template if:true={recordId}>
 
-        <div class="slds-m-horizontal_medium">
+            <div class="slds-m-horizontal_medium">
 
-            <img src={carPictureUrl} alt="Car Picture" />
- 
-            <lightning-record-view-form onload={handleRecordLoaded} record-id={recordId} object-api-name="Car__c" density="compact">
-                <lightning-output-field field-name={categoryField}></lightning-output-field>
-                <lightning-output-field field-name={makeField}></lightning-output-field>
-                <lightning-output-field field-name={msrpField}></lightning-output-field>
+                <img src={carPictureUrl} alt="Car Picture" />
+     
+                <lightning-record-view-form onload={handleRecordLoaded} record-id={recordId} object-api-name="Car__c" density="compact">
+                    <lightning-output-field field-name={categoryField}></lightning-output-field>
+                    <lightning-output-field field-name={makeField}></lightning-output-field>
+                    <lightning-output-field field-name={msrpField}></lightning-output-field>
+    
+                    <section>Other Features</section>
+    
+                    <lightning-output-field field-name={fuelField}></lightning-output-field>
+                    <lightning-output-field field-name={seatField}></lightning-output-field>
+                    <lightning-output-field field-name={controlField}></lightning-output-field>
+    
+                   
+    
+                </lightning-record-view-form>
+    
+            </div>
 
-                <section>Other Features</section>
+        </template>
 
-                <lightning-output-field field-name={fuelField}></lightning-output-field>
-                <lightning-output-field field-name={seatField}></lightning-output-field>
-                <lightning-output-field field-name={controlField}></lightning-output-field>
 
-               
+        <template if:false={recordId}>
+            <c-car-placeholder message="hi this is me"></c-car-placeholder>
+        </template>
 
-            </lightning-record-view-form>
 
-        </div>
+
+        
         
     </lightning-card>
     

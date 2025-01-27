@@ -10,7 +10,7 @@ import CAR_RECORD_ID from '@salesforce/messageChannel/carIdLMS__c';
 
 export default class CarTilelist extends LightningElement {
 
-    cars;
+    cars=[];
     error;
     carFilterSubscription;
     filter={};
