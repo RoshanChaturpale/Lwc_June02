@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+   
+   <masterLabel>CarIdLMSDemo</masterLabel>
+   <isExposed>true</isExposed>
+   <description>This is a Sample Lightning Message Channel. to Send Id CarTileList to CarCard Component</description>
+
+   <lightningMessageFields>
+      <fieldName>Carid</fieldName>
+      <description>Field use send Recordid</description>   
+   </lightningMessageFields>
+
+   
+
+</LightningMessageChannel>

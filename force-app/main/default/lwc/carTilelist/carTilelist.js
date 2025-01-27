@@ -2,8 +2,10 @@ import { LightningElement, wire } from 'lwc';
 import getCar from '@salesforce/apex/carController.getCar';
 
 
-import { subscribe, MessageContext } from 'lightning/messageService';
+import { publish, subscribe, MessageContext } from 'lightning/messageService';
 import CAR_FILTER from '@salesforce/messageChannel/carLMS__c';
+import CAR_RECORD_ID from '@salesforce/messageChannel/carIdLMS__c';
+
 
 
 export default class CarTilelist extends LightningElement {
@@ -12,6 +14,7 @@ export default class CarTilelist extends LightningElement {
     error;
     carFilterSubscription;
     filter={};
+    add
     
     @wire(getCar, {filters : '$filter'}) 
     carProperty({data,error}){
@@ -47,6 +50,14 @@ export default class CarTilelist extends LightningElement {
     messageHandler(messsage){
       //  console.log('message is', messsage.filters);
         this.filter = messsage.filters;
+
+    }
+
+    cardClick(event){
+
+        this.add =event.detail;
+        //console.log('this add', this.add);
+        publish(this.messageContext, CAR_RECORD_ID, {Carid : this.add});
 
     }
 

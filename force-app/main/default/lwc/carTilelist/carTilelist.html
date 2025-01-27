@@ -8,7 +8,7 @@
             <template if:true={cars}>
                 <div class="content">
                     <template for:each={cars} for:item="car">
-                        <c-car-tile-child-component key={car.id} car={car}></c-car-tile-child-component>
+                        <c-car-tile-child-component key={car.id} car={car} oncardclicked={cardClick}></c-car-tile-child-component>
                     </template>
                 </div>
                 
