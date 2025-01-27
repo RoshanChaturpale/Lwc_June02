@@ -1,10 +1,20 @@
 <template>
 
-    <lightning-card title="LMS Component B">
+    <lightning-card title="LMS Copm B">
 
-        <div class="slds-p-around_small">
-            Comp B : {messageReceiver}
+        <div class="slds-p-around_medium">
+            <template if:true={data}>
+
+                <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}>
+        </lightning-datatable>
+
+            </template>
+           
         </div>
+
     </lightning-card>
-    
+   
 </template>

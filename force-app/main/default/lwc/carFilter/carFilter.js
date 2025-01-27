@@ -5,6 +5,11 @@ import CATEGORY_FIELD from '@salesforce/schema/Car__c.Category__c';
 import MAKE_FIELD from '@salesforce/schema/Car__c.Make__c';
 
 
+//forLMS
+import { publish, MessageContext } from 'lightning/messageService';
+import CAR_FILTER from '@salesforce/messageChannel/carLMS__c';
+
+
 const CATEGORY_ERROR = 'Error Loading Categories';
 const MakeTypeError='Error Loading Make Tpye';
 export default class CarFilter extends LightningElement {
@@ -34,6 +39,7 @@ export default class CarFilter extends LightningElement {
 
    this.filter.searchKey =event.target.value;
    //console.log('handleSearchKeyChange is=== ' , this.filter.searchKey);
+   this.sendDataToCarList();
 
 
     }
@@ -41,6 +47,7 @@ export default class CarFilter extends LightningElement {
     handleMaxPriceChange(event){
 
         this.filter.maxPrice = event.target.value;
+        this.sendDataToCarList();
         //console.log('handleSearchKeyChange is=== ' ,this.filter.maxPrice);
 
 
@@ -57,5 +64,14 @@ export default class CarFilter extends LightningElement {
         //console.log('value', value);
 
 
+    }
+
+
+    //Load Context for LMS
+    @wire(MessageContext)
+    messageContext;
+
+    sendDataToCarList(){
+        publish(this.messageContext,  CAR_FILTER  , {filters : this.filter})
     }
 }

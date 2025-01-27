@@ -9,7 +9,7 @@ export default class ParentComponentSeachData extends NavigationMixin(LightningE
     onChangeEventHandler(event){
 
         this.fname = event.target.value;
-        console.log('this.fname' , this.fname);
+       // console.log('this.fname' , this.fname);
        
         this.template.querySelector('c-child-component-show-data').handleChildRecord(this.fname);
     }

@@ -1,22 +1,55 @@
 import { LightningElement, wire } from 'lwc';
 import getCar from '@salesforce/apex/carController.getCar';
 
+
+import { subscribe, MessageContext } from 'lightning/messageService';
+import CAR_FILTER from '@salesforce/messageChannel/carLMS__c';
+
+
 export default class CarTilelist extends LightningElement {
 
     cars;
     error;
-    @wire(getCar) 
+    carFilterSubscription;
+    filter={};
+    
+    @wire(getCar, {filters : '$filter'}) 
     carProperty({data,error}){
 
         if(data){
-           //console.log('car data ==' , data);
+          // console.log('car data ==' , data);
             this.cars = data;
         }
         if(error){
-            this.error = error;
+            //this.error = error;
            // console.log('error is' , error);
         }
 
     };
+
+
+    @wire(MessageContext)
+    messageContext;
+
+
+    connectedCallback(){
+        this.subscribeHandler();
+    }
+
+
+    subscribeHandler(){
+
+       this.carFilterSubscription = subscribe(this.messageContext, CAR_FILTER, (message) => this.messageHandler(message));
+
+
+    }
+
+    messageHandler(messsage){
+      //  console.log('message is', messsage.filters);
+        this.filter = messsage.filters;
+
+    }
+
+
 
 }

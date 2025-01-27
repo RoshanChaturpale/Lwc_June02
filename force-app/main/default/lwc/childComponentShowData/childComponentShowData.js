@@ -23,7 +23,7 @@ export default class ChildComponentShowData extends LightningElement {
     ];
 
     @api handleChildRecord(receivedParentData) {
-        console.log('Received Parent Data:', JSON.stringify(receivedParentData));
+        //console.log('Received Parent Data:', JSON.stringify(receivedParentData));
         this.holdParentData = receivedParentData;
     }
 

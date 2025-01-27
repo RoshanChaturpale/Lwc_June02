@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+   
+   <masterLabel>CarFilterDemo</masterLabel>
+   <isExposed>true</isExposed>
+   <description>This is a Sample Lightning Message Channel.</description>
+
+   <lightningMessageFields>
+      <fieldName>filters</fieldName>
+      <description>Field use to Search Data.</description>   
+   </lightningMessageFields>
+
+   
+
+</LightningMessageChannel>
