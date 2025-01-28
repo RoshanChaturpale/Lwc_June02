@@ -1,0 +1,38 @@
+<template>
+
+
+    <lightning-card  icon-name="standard:action">
+
+
+        <template if:true={saveData}>
+
+
+            <span slot="title">{saveData.Name}</span>
+
+
+            
+                <lightning-button  icon-name="utility:expand_alt" slot="actions" onclick={handleNavigateToRecord}></lightning-button>
+
+
+                <div class="slds-p-around_small">
+
+                    <img src={saveData.Image_Url__c} class="crickerter">
+
+                    <h1 class="slds-m-bottom_small">Player Details</h1>
+
+                    <p>RUNS : {saveData.Runs__c}</p>
+                    <p>AGE : {saveData.Age__c}</p>
+                    <!-- <p>Nationality : {SaveData.Nationality__c}</p> -->
+
+
+
+                </div>
+        
+
+
+        </template>
+
+        
+    </lightning-card>
+    
+</template>

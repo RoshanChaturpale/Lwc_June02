@@ -2,6 +2,9 @@ import { api, LightningElement, wire } from 'lwc';
 import getCricketerList from '@salesforce/apex/apexClass_practice_LWC.getCricketerList'
 import Json_format from '@salesforce/resourceUrl/Json_format';
 
+import { publish, MessageContext } from 'lightning/messageService';
+import CRICKET_CARD_ID from '@salesforce/messageChannel/PlayerCardRecordId__c';
+
 export default class PlayerSearchResults extends LightningElement {
 
     cricketerNationality = '';
@@ -20,18 +23,20 @@ export default class PlayerSearchResults extends LightningElement {
         }
     }
 
+    //LMS
+    @wire(MessageContext)
+    messageContext;
+
     //target id
     handleClickPlayerCard(event) {
        // console.log('handleClickPlayerCard');
     
         // Ensure dataset and id are available
-        if (event.currentTarget && event.currentTarget.dataset) {
-            this.selectedPlayerId = event.currentTarget.dataset.id;
-          //  this.selectedPlayerName = event.currentTarget.dataset.Name;
+         this.selectedPlayerId = event.currentTarget.dataset.id;
+         //console.log('this.selectedPlayerId',this.selectedPlayerId);
 
-            //console.log('this.selectedPlayerId: ' + JSON.stringify(this.selectedPlayerId));
-           // console.log('Selected Player Name: ' + JSON.stringify(this.selectedPlayerName));
-        }
+         //LMS
+         publish(this.messageContext, CRICKET_CARD_ID, { playerRecordId : this.selectedPlayerId});
 
 
         //blue border

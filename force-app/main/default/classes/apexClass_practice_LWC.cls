@@ -29,6 +29,15 @@ public with sharing class apexClass_practice_LWC {
         }       
     
    }
+
+   @AuraEnabled(cacheable=true)
+    public static Cricketers__c getCricketerData(String playerId) {
+
+
+        Cricketers__c crickerData = [Select id, Name,Age__c,Images__c,Runs__c, Image_Url__c, Nationality__c from Cricketers__c where id =: playerId];
     
+        return crickerData;
+
+    }
     
 }
