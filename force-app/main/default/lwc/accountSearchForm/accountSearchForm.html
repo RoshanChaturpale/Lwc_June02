@@ -1,28 +1,17 @@
 <template>
 
-    <lightning-card title="Parent Comp">
-        <div class="slds-p-around_xx-large">
-            <!-- Input Field -->
-            <lightning-input 
-                type="text" 
-                label="Enter Message" 
-                onchange={handleInputChange}>
-            </lightning-input>
-    
-            <!-- Search Button -->
-            <lightning-button 
-                label="Show Message" 
-                variant="brand" 
-                class="slds-m-top_small"
-                onclick={handleButtonClick}>
-            </lightning-button>
-    
-        </div>
+    <lightning-card title="AccountSearchForm">
+        <lightning-layout class="slds-p-around_medium">
+            <lightning-layout-item class="slds-p-left_large">
+                <lightning-input label="Search Account" type="Text" placeholder="Search Account Data" value={searchvalue} onchange={searchOnChangeHandler}></lightning-input>
+            </lightning-layout-item>
 
-        <div class="slds-p-horizontal_medium">
-             <!-- Child Component -->
-            <c-account-data-result></c-account-data-result>
-        </div>
-        </lightning-card>
-    
+            <lightning-layout-item class="slds-m-left_small slds-m-top_large ">
+                <lightning-button variant="brand" label="Brand" title="Primary action" onclick={buttonhandleClick} class="slds-m-left_x-small"></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+
+
+
 </template>

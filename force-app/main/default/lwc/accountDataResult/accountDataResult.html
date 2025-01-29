@@ -1,14 +1,19 @@
 <template>
 
-    <lightning-card title="Child Cmp">
 
-        <div style="height: 300px;">
-            <lightning-datatable
-                    key-field="id"
-                    data={saveData}
-                    columns={columns}>
-            </lightning-datatable>
-        </div>
+    <lightning-card title="accountDataResult">
+
+
+        <lightning-datatable
+                key-field="id"
+                data={accountData}
+                columns={columns}
+                hide-checkbox-column="true"
+                show-row-number-column="true"
+                
+                >
+        </lightning-datatable>
+
 
     </lightning-card>
     

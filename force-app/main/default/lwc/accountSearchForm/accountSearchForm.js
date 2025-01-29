@@ -5,20 +5,15 @@ import { LightningElement, track} from 'lwc';
 export default class AccountSearchForm extends LightningElement {
     
 
-    message = '';
-
-    // Capture input field value
-    handleInputChange(event) {
-        this.message = event.target.value;
+    searchvalue;
+    
+    
+    searchOnChangeHandler(event){
+        this.searchvalue = event.target.value;
     }
 
-    // Button Click Handler: Call Child Method using querySelector
-    handleButtonClick() {
-        const childComponent = this.template.querySelector('c-account-data-result').showMessage(this.message);
-
-        // const childComponent = this.template.querySelector('c-account-data-result');
-        // if (childComponent) {
-        //     childComponent.showMessage(this.message);
-        // }
+    buttonhandleClick(){
+       // console.log('this.searchValue', this.searchValue);
+        this.dispatchEvent(new CustomEvent('searchaccountcontact', {detail: this.searchvalue}))
     }
 }
