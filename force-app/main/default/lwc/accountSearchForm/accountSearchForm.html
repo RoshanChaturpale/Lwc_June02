@@ -1,0 +1,28 @@
+<template>
+
+    <lightning-card title="Parent Comp">
+        <div class="slds-p-around_xx-large">
+            <!-- Input Field -->
+            <lightning-input 
+                type="text" 
+                label="Enter Message" 
+                onchange={handleInputChange}>
+            </lightning-input>
+    
+            <!-- Search Button -->
+            <lightning-button 
+                label="Show Message" 
+                variant="brand" 
+                class="slds-m-top_small"
+                onclick={handleButtonClick}>
+            </lightning-button>
+    
+        </div>
+
+        <div class="slds-p-horizontal_medium">
+             <!-- Child Component -->
+            <c-account-data-result></c-account-data-result>
+        </div>
+        </lightning-card>
+    
+</template>
