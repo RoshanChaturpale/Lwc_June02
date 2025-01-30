@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+   
+   <masterLabel>AccountAndContactRecord</masterLabel>
+   <isExposed>true</isExposed>
+   <description>This is a Sample Lightning Message Channel.</description>
+
+   <lightningMessageFields>
+      <fieldName>accountRecordId</fieldName>
+      <description>fetch Contacts Records with this help of Account ID</description>   
+   </lightningMessageFields>
+
+
+   <lightningMessageFields>
+      <fieldName>accountName</fieldName>
+      <description>fetch Contacts Records with this help of Account Name</description>   
+   </lightningMessageFields>
+
+    <lightningMessageFields>
+      <fieldName>accountEmail</fieldName>
+      <description>fetch Contacts Records with this help of Account Name</description>   
+   </lightningMessageFields>
+
+   
+
+   
+
+</LightningMessageChannel>

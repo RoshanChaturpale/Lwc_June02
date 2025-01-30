@@ -2,7 +2,34 @@
 
 
     <lightning-card title="for LMS use to">
-        <h1>djdjddj</h1>
+        <lightning-layout multiple-rows class="slds-p-around_small">
+            <lightning-layout-item size="12">
+                <template if:true={saveData}>
+                    <template for:each={saveData} for:item="con">
+                        <lightning-layout class="slds-box slds-m-around_small" key={con.id}>
+                            <lightning-layout-item size="8">
+                                <strong>{con.FirstName}</strong>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="4">
+                                <lightning-button-icon icon-name="utility:edit"   variant="brand" alternative-text="Add user" class="slds-m-left_xx-small" title="Edit"></lightning-button-icon>
+                                <lightning-button-icon icon-name="utility:delete"    variant="brand" alternative-text="Delete"   class="slds-m-left_xx-small" title="Delete"></lightning-button-icon>
+                        
+                                
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </template>       
+                </template>
+
+                <template if:false={saveData}>
+                    <strong>Data is Not Found</strong>
+                </template>
+            </lightning-layout-item>
+
+        </lightning-layout>
+        
+    
+
+    
     </lightning-card>
     
 </template>
