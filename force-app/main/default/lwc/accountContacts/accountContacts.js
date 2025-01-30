@@ -12,6 +12,9 @@ export default class AccountContacts extends LightningElement {
     accId = '';
     saveData;
     title = 'Contacts';
+    isVisible= false;
+    editableContactId;
+    
 
 
     //LMS Part
@@ -48,16 +51,23 @@ export default class AccountContacts extends LightningElement {
 
         this.accId = message.accountRecordId;
 
+        this.getContacts();
+
+        
+
+
+     }
+     getContacts(){
         getAccountContactData({recordId : this.accId})
         .then(result => {
             console.log('rsult is ===>' ,result);
+            this.saveData = result;
             
                 })
         .catch(error => {
             console.log('imperative error is found..');
 
         })
-
 
      }
 
@@ -72,7 +82,43 @@ export default class AccountContacts extends LightningElement {
     
 //call Apex Class to ShowData
 
+editButtonHandler(event){
+    //console.log('edti mode');
+    this.editableContactId = event.target.dataset.contactid;
+    console.log('this.editableContactId', this.editableContactId);
+    this.isVisible = true;
+    
 
+}
+
+deleteButtonHandler(event){
+    console.log('delete');
+    this.editableContactId = event.target.dataset.contactId;
+    console.log('this.deletableContactId', this.editableContactId);
+
+
+
+}
+
+popupCloseHandler(event){
+
+    this.isVisible = false;
+    this.editableContactId = null;
+
+
+}
+
+handleSuccess(){
+
+    this.popupCloseHandler();
+    this.getContacts();
+
+}
+
+addContactHandler(){
+    this.isVisible = true;
+
+}
 
 
 
