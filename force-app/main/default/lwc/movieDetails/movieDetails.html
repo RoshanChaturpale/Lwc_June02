@@ -1,0 +1,11 @@
+<template>
+    
+
+    <lightning-card title="movies Details">
+        <template if:true={movieDetails}>
+            <div class="slds-col slds-var-m-around_small">
+                <img src={movieDetails.Poster} alt="Image Not Found">
+            </div>
+        </template>
+    </lightning-card>
+</template>

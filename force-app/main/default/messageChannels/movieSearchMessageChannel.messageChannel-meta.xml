@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+   
+   <masterLabel>MovieCardDetail</masterLabel>
+   <isExposed>true</isExposed>
+   <description>This is a Sample Lightning Message Channel.</description>
+
+   <lightningMessageFields>
+      <fieldName>movieRecordId</fieldName>
+      <description>Field to featch Movies Details</description>   
+   </lightningMessageFields>
+
+   
+
+</LightningMessageChannel>

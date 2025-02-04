@@ -60,7 +60,7 @@ export default class AccountContacts extends LightningElement {
      getContacts(){
         getAccountContactData({recordId : this.accId})
         .then(result => {
-            console.log('rsult is ===>' ,result);
+           // console.log('rsult is ===>' ,result);
             this.saveData = result;
             
                 })

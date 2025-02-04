@@ -22,12 +22,21 @@ public with Sharing class accountData {
     @AuraEnabled(Cacheable = true)
     public static list<Account> getAccountData(String textkey) {
         textkey = '%' + textkey + '%';
-        list<Account> accLst = [SELECT  Id, Name, Industry, Phone, Type From Account WHERE Name LIKE :textkey];
+        list<Account> accLst = [SELECT  Id, Name, Industry,Account_Email__c, Phone, Type From Account WHERE Name LIKE :textkey];
         
         if(accLst.isEmpty()) {
             throw new AuraHandledException('No Record Found..');
         }
         return accLst; 
+    }
+    
+    @AuraEnabled(Cacheable = true)
+    public static list<Contact> getAccountContactData(String recordId) {
+        
+        List<Contact> contactList = [Select Id, AccountId , FirstName,LastName, Phone From Contact Where AccountId =: recordId];
+        
+        return contactList;
+        
     }
     
     
