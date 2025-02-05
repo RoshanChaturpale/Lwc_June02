@@ -3,8 +3,8 @@
     
 
      <types>
-       <members>*</members>
-       <name>LightningMessageChannel</name>
+       <members>accountData</members>
+       <name>ApexClass</name>
     </types>
     
     <version>62.0</version>

@@ -11,8 +11,8 @@
                 <c-parent-component-seach-data></c-parent-component-seach-data>
                </lightning-tab>
 
-               <!-- <lightning-tab label="Search Account">
-                <c-lwc_ComboBox_with_Imperative_Method></c-lwc_ComboBox_with_Imperative_Method>
+               <!-- <lightning-tab label="csvData Dawnload">
+                <c-csv-component></c-csv-component>
                </lightning-tab> -->
             
             
@@ -29,7 +29,14 @@
 
 
             <lightning-tab label="Search Movies">
-              <c-movies></c-movies>
+              <lightning-tabset>
+                <lightning-tab label="searchMovies">
+                  <c-movies></c-movies>
+                </lightning-tab>
+                <lightning-tab label="searchMovies">
+                  <c-movie-search></c-movie-search>
+                </lightning-tab>
+              </lightning-tabset>
             </lightning-tab>
 
 
@@ -54,6 +61,11 @@
            <lightning-tab label="Weather Api">
             <c-wether-api-check></c-wether-api-check>
          </lightning-tab>
+
+         <lightning-tab label="csvFileDawnload-Data">
+          <c-csv-component></c-csv-component>
+        </lightning-tab>
+
 
 
         </lightning-tabset>
