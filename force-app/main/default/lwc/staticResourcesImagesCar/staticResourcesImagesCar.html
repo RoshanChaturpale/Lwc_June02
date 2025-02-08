@@ -1,9 +1,18 @@
 <template>
     <lightning-card title="CarHub Images">
-        <template if:true={carHubImages}>
+        <!-- <template if:true={carHubImages}>
             <template for:each={carHubImages} for:item="car">
                 <img key={car} src={car} alt="Car Image" style="width: 100%; height: auto; margin-bottom: 10px;"/>
             </template>
-        </template>
+        </template> -->
+
+        
+            <lightning-card title="CarHub Image">
+                <template if:true={carImage}>
+                    <img src={carImage} alt="Car Image" style="width: 100%; height: auto; border-radius: 8px;"/>
+                </template>
+            </lightning-card>
+    
+        
     </lightning-card>
 </template>
