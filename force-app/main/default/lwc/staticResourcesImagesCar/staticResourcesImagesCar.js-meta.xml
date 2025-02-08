@@ -3,11 +3,8 @@
     <apiVersion>62.0</apiVersion>
     <isExposed>true</isExposed>
 
-
-    <masterLabel>Car Card Component</masterLabel>
-
     <targets>
+
       <target>lightning__AppPage</target>
-      <target>lightningCommunity__Page</target>
     </targets>
 </LightningComponentBundle>
