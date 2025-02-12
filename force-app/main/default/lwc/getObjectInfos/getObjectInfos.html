@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="getObjectInfos">
+        <template if:true={saveData}>
+            <template for:each={saveData} for:item="item">
+                <div key={item.result}>
+                    <div>object Api Name :  {item.result.apiName}</div>
+                    <div>defaultRecordTypeId : {item.result.defaultRecordTypeId}</div>
+                </div>
+
+            </template>       
+         </template>
+    </lightning-card>
+</template>
