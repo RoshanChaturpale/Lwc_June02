@@ -1,0 +1,29 @@
+<template>
+
+    <lightning-card title="getListUiDemo">
+        <table title="All Contact List">
+            <thead>
+                <tr>
+                    <th>FirstName</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <template for:each={contactSaveData} for:item="contact">
+                    <tr key={contact.fields.Id.Value}>
+                        <td>{contact.fields.Name.value}</td>
+                        <td>{contact.fields.Email.value}</td>
+
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+
+        <div>
+            <div><lightning-button label="Previous" onclick={handlePrevious}></lightning-button></div>
+            <div><lightning-button label="Next" onclick={handleNext}></lightning-button></div>
+        </div>
+    </lightning-card>
+    
+</template>
