@@ -5,24 +5,25 @@ import CONTACT_OBJECT from '@salesforce/schema/Contact';
 
 export default class CreateRecordDemo extends LightningElement {
 
-     fields={};
+     formfields={};
 
 
     changeHandler(event){
 
         const{name, value} = event.target;
-        fields[name] = value;
+        this.formfields[name] = value;
     }
 
 
     createContactHandler(){
 
 
-        const recordInput = { apiName: CONTACT_OBJECT.objectApiName, fields };
+        const recordInput = { apiName: CONTACT_OBJECT.objectApiName, fields : this.formfields};
 
         createRecord(recordInput)
         .then(result => {
             console.log('record Created Successfully...');
+            alert('record created successfully');
         }); 
 
 
