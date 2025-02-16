@@ -1,0 +1,12 @@
+<template>
+  <lightning-card title="Object Picklist Values">
+      <lightning-combobox
+          name="objectPicklist"
+          label="Available Objects"
+          value={selectedObject}
+          placeholder="Select an Object"
+          options={objectOptions}
+          onchange={handleChange}>
+      </lightning-combobox>
+  </lightning-card>
+</template>

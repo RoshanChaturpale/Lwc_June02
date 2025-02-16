@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Parent Object Picklist Card">
+        <c-objects-picklists onmyevent={objectPicklistHandler}></c-objects-picklists>
+    </lightning-card>
+
+    <lightning-card title="For Object Picklist Child">
+        <c-object-picklist-child sendtoobjectpicklistchild={sendDataObjectPicklistChild}></c-object-picklist-child>
+    </lightning-card>
+</template>
