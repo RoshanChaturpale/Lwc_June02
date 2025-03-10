@@ -48,7 +48,7 @@ export default class CarTilelist extends LightningElement {
     }
 
     messageHandler(messsage){
-      //  console.log('message is', messsage.filters);
+       // console.log('message is', messsage.filters);
         this.filter = messsage.filters;
 
     }

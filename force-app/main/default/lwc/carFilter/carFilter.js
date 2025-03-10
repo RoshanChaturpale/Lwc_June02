@@ -23,7 +23,7 @@ export default class CarFilter extends LightningElement {
 
 
  @wire(getObjectInfo, {objectApiName:CAR_OBJECT})
- carObjectInfo
+ carObjectInfo;
 
  @wire(getPicklistValues, {recordTypeId: '$carObjectInfo.data.defaultRecordTypeId', fieldApiName:CATEGORY_FIELD})
  categories;

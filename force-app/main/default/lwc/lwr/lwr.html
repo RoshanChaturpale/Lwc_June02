@@ -1,0 +1,29 @@
+<template>
+    <nav class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+            <img src={logoUrl} alt="Logo">
+        </div>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/orders">Orders</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+
+        <!-- Icons -->
+        <div class="icons">
+            <a href="/wishlist" class="icon">
+                <lightning-icon icon-name="utility:favorite" size="medium" alternative-text="Wishlist"></lightning-icon>
+            </a>
+            <a href="/cart" class="icon">
+                <lightning-icon icon-name="utility:cart" size="medium" alternative-text="Cart"></lightning-icon>
+            </a>
+            <a href="/login" class="icon">
+                <lightning-icon icon-name="utility:user" size="medium" alternative-text="Login"></lightning-icon>
+            </a>
+        </div>
+    </nav>
+</template>
